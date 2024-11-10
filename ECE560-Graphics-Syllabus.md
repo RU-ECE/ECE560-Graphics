@@ -2,19 +2,42 @@
 
 Dov Kruger
 
-Should graphics be a core course for PhD?
+## Prerequisites
+
+- There are no course prerequisites, but you must know how to program in C++.
+- The course starts with processing, which is an easy Java front end and lets you focus on graphics.
+- But once we switch to C++ and OpenGL, all the details of C (pointers and memory bugs) and the object-oriented details of C++
+  are required. While I can try to fill in the gaps, you really need to know the fundamentals.
+- There is no entrance exam, take at your own risk.
+- You should know:
+  - pointers and pointer arithmetic
+  - dynamic memory allocation (malloc, free in C, new, delete in C++)
+  - C++ classes
+    - constructors, destructors
+    - copy constructor, operator =
+    - virtual functions
+    - inheritance
+  - Basic linear algebra is helpful
+    - matrix multiplication
+    - basic vector operations
+
+- The following video shows a session where I taught object-oriented programming in C++ as background for parallel programming.
+  At the very least, you should make sure you understand the material in the video.
 
 ## Syllabus
 
 This course is an introduction to three-dimensional computer graphics and visualization. By the end of this course, students will know how to:
 
 * Draw efficient 2D and 3D graphics
-* Identify matrix and Quaternion math for 3D transformations
+* Implement matrix and Quaternion operations for 3D transformations
+* Apply affine transformations to 3D models
 * Identify the stages in the OpenGL 3D pipeline
 * Write Shader programs
-* Generate efficient scene graphs
+* Render scenes efficiently using data structures to draw subsets of the model
 * Write Vulkan programs
-* Identify principles of 
+* Identify principles of Data Visualization
+* Recognize characteristics of good and bad visualizations
+* Be able to present data clearly using graphs that are well-suited to the data
 
 ## Grading
 
