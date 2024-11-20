@@ -37,6 +37,7 @@ This course is an introduction to three-dimensional computer graphics and visual
 * Identify the stages in the OpenGL 3D pipeline
 * Write Shader programs
 * Render scenes efficiently using data structures to draw subsets of the model
+* WebGL?
 * Write Vulkan programs
 * Identify principles of Data Visualization
 * Recognize characteristics of good and bad visualizations
@@ -62,22 +63,29 @@ We will use the free book at learnopengl.com as the primary textbook. It is in t
 
 ## Tentative Schedule
 
-- hW0
+- hW0 (nothing to submit, just prepare)
   - Install processing (works on all machines).
   - If using windows install WSL so you have a linux inside and in there install g++, gdb, vscode, git, make, cmake, glfw, glm.
   - If you have a Mac, you may have to use a different computer. Unfortunately Apple has deprected OpenGL and reneged on their promise to support Vulkan. Apple is Unix-based but a software environment unlike any other.
   - If you don't do all the setup at first, you can do it later, but it's better to get it out of the way as soon as possible.
   - You may use the machines in the vlab to do homework. They are accessible via web at vlab.rutgers.edu
+    - Go to [vlab.rutgers.edu](https://vlab.rutgers.edu/)
+    - Click on Reset SOE Password and set up your password
 - week1 session1: Introduction to Computer Graphics, 2D animation in Processing
   - HW: Simple animations
 - week1 session2: 3D graphics in Processing (wrapping OpenGL)
   - HW: Earth-moon
   - HW: transformation exercises
 - week2 session1: Manually creating a shape with triangles and quads
-  - HW: Rings of Saturn
+  - HW: Rings of Saturn: create a transparent image
 - week2 session2: 3D transformations
+  - perspective
+  - 2d (ortho)
 - week3 session1: C++ Review
-  - HW: install g++/clang++, OpenGL
+  - You should already have installed g++/clang++, OpenGL
+  - Linking libraries: -l -L LD_LIBRARY_PATH
+  - OpenGL libraries
+  - Windowing Libraries
 - week3 session2: A first OpenGL program
   - Old school is easy
   - HW: legacy OpenGL
@@ -86,6 +94,7 @@ We will use the free book at learnopengl.com as the primary textbook. It is in t
   - Creating a toolkit to avoid repetition code
   - Compiling and linking shaders
   - HW: Get my simple demo running on your machine
+  - HW: Gouraud-Shaded triangle?
 - week4 session2: Modern OpenGL 2
   - intro to shaders
   - HW: 2d line drawing
@@ -93,11 +102,12 @@ We will use the free book at learnopengl.com as the primary textbook. It is in t
   - HW: Earth-moon
 - week5 session2: TEST #1 (transformations, shaders, VAOs, VBOs, textures)
 - week6 session1: Object-oriented approach to OpenGL
+  - class Body
   - HW: Solar system
 - week6 session2: lighting
   - HW: Lighting your solar system
   - HW: Select groups for final projects
-- week7 session1: Rendering a Schene
+- week7 session1: Rendering a Scene
   - Data structures for efficiently rendering a complex scene (quadtree, octree)
   - HW: Solar System, Rendering only visible objects
 - week7 session2: Writing fragment shaders
@@ -153,6 +163,8 @@ We will use the free book at learnopengl.com as the primary textbook. It is in t
   - Manage a terrain mesh, and render it using a heightmap
 - Fractal trees
   - Use an L-system to generate a set of trees
+  - [See wikipedia](https://en.wikipedia.org/wiki/Barnsley_fern)
+  - How do they do it in the movies? 3d version?
 - 3D font based on FTGL
   - FTGL is a library for using fonts in OpenGL
   - It supports limited 3D fonts, but does it badly
@@ -173,7 +185,11 @@ We will use the free book at learnopengl.com as the primary textbook. It is in t
   - Try to create this visualization [Earth.nullschool.net](https://earth.nullschool.net/) 
 
 
-The instructors reserve the right to adjust the grading scale. There will always be some students
+## Grading Policies (TBD)
+
+The following text is old, has only been partially edited.
+
+The instructor reserves the right to adjust the grading scale. There will always be some students
 who are very close to grade boundaries. There is nothing that we will do about that. Grades are
 based on performance, not need or personal circumstances, and the instructor does not negotiate
 grades. Do not take ECE560 (or take it at your own risk) if you need a certain grade, for
@@ -198,7 +214,6 @@ If asked, you must be prepared to explain any software you have submitted. Failu
 
 We use discord to communicate. You can post questions there, and other students can answer. 
 You will be given class participation credit for any answers you give on discord which can help your grade.
-
 
 ## Resources
 
