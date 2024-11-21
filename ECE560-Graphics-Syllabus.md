@@ -213,6 +213,9 @@ https://www.khronos.org/registry/
 http://users.polytech.unice.fr/˜buffa/cours/synthese_image/DOCS/www.
 xmission.com/Nate/tutors.html
 
+[Ray Tracing in one Weekend Tutorial](https://www.youtube.com/watch?v=nQ3TRft18Qw)
+[Ray Tracing in one Weekend source material](https://raytracing.github.io/)
+
 ## Supplemental Books
 Steven J. Gortler. Foundations of 3D Computer Graphics. First Edition, The MIT Press, 2012,
 ISBN-10: 0262017350, ISBN-13: 978-0262017350.
@@ -256,4 +259,4 @@ I am building this course with the help of various resources from the internet
 
 - Frank Pfenning and Jessica Hodgins, CMU
 - Oded Stein, USC
-
+- Edward Tufte
