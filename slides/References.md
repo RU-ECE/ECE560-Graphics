@@ -25,3 +25,7 @@
 
 [OpenGL tutorial Nicholbolas?](https://nicolbolas.github.io/oldtut/index.html)
 [OpenGL tutorial videos Cherno](https://www.youtube.com/watch?v=W3gAzLwfIP0&index=1&list=PLlrATfBNZ98foTJPJ_Ev03o2oq3-GGOS2)
+
+[Asteroid Models](https://3d-asteroids.space)
+[Stanford Ply format](https://grapherhelp.goldensoftware.com/subsys/subsys_stanford_polygon_ply_description.htm)
+[NASA 3D Models](https://planetarynames.wr.usgs.gov)
