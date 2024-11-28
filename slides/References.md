@@ -5,6 +5,7 @@
 [The Visual Display of Quantitative Information](https://www.amazon.com/Visual-Display-Quantitative-Information/dp/0961392142)
 
 
+[The Red book](https://www.cs.utexas.edu/~fussell/courses/cs354/handouts/Addison.Wesley.OpenGL.Programming.Guide.8th.Edition.Mar.2013.ISBN.0321773039.pdf)
 
 
 # Articles
@@ -29,3 +30,4 @@
 [Asteroid Models](https://3d-asteroids.space)
 [Stanford Ply format](https://grapherhelp.goldensoftware.com/subsys/subsys_stanford_polygon_ply_description.htm)
 [NASA 3D Models](https://planetarynames.wr.usgs.gov)
+[viz.wtf](https://viz.wtf/)
