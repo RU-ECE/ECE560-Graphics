@@ -45,10 +45,11 @@ This course is an introduction to three-dimensional computer graphics and visual
 
 ## Grading
 
-- Homework:         20%
-- Test #1:          20%
-- Test #2:          20%
-- Final Project:    40%
+- Homework:            20%
+- Class Participation: 15%
+- Test #1:             15%
+- Test #2:             15%
+- Final Project:       35%
 
 ## Textbook and Materials
 
