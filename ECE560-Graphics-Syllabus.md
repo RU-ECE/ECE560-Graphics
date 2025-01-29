@@ -61,6 +61,10 @@ We will use the free book at learnopengl.com as the primary textbook. It is in t
 - [OpenGL Red Book](http://www.opengl-redbook.com/)
 - [OpenGL Shaders Orangle book](https://www.amazon.com/OpenGL-Shading-Language-Randi-Rost/dp/0321637631)
 - [Anton Gerdelan's OpenGL Tutorial](https://antongerdelan.net/opengl/)
+- [Sascha Willem's Vulkan Demos](TODO)
+- [Sascha Willem's Vulkan Demos](https://www.saschawillems.de/creations/vulkan-examples/)
+- [Etay Meiri ogldev](https://ogldev.org/)
+- [ogldev demos](https://github.com/emeiri/ogldev)
 
 ## Tentative Schedule
 
