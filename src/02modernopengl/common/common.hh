@@ -44,3 +44,7 @@ void render_indexed_colored(GLuint program, GLuint vao, GLuint vert, GLuint inde
 	generically render a surface composed of a VAO, containing a vertex buffer with a value per vertex looking up in a 1D-texture	
 */
 void render_indexed_heatmap(GLuint program, GLuint vao, GLuint vert, GLuint index, GLuint texture);
+
+
+extern const char* const vertex_shader_pervertex;
+extern const char* const frag_shader_common;

@@ -10,7 +10,7 @@ else
 endif
 
 all: bin/01window bin/02triangle bin/03gouraud \
-	bin/04transform bin/04b_input2 bin/04c_projection bin/05sphere1 \
+	bin/04transform bin/04c_projection bin/05sphere1 \
 	bin/06sphere2 bin/06b_sphere3 bin/06c_litsphere bin/07visualizefunc
 
 #this builds the single common object file used by all demos

@@ -61,20 +61,6 @@ void glmain() {
 	}	while( glfwGetKey(win, GLFW_KEY_ESCAPE ) != GLFW_PRESS &&
 		   glfwWindowShouldClose(win) == 0 );
 
-		glEnableVertexAttribArray(0); // pass x,y to shader
-		glEnableVertexAttribArray(1); // pass rgb to shader
-		// Draw the triangle !
-		glDrawArrays(GL_TRIANGLES, 0, 3); // 3 indices starting at 0 -> 1 triangle
-
-		glDisableVertexAttribArray(0);
-		glDisableVertexAttribArray(1);
-
-		glfwSwapBuffers(win); // double buffer
-		glfwPollEvents();
-
-	}	while( glfwGetKey(win, GLFW_KEY_ESCAPE ) != GLFW_PRESS &&
-		   glfwWindowShouldClose(win) == 0 );
-
 	// Cleanup VBO
 	glDeleteBuffers(1, &vbo);
 	glDeleteVertexArrays(1, &vao);

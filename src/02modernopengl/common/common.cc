@@ -48,7 +48,7 @@ GLuint build_prog(const char vertex_shader[], const char fragment_shader[]) {
     check_status( prog, false );
 	return prog;
 }
-const char* const vertex_shader_pervertex_ = 1 + R"GLSL(
+const char* const vertex_shader_pervertex = 1 + R"GLSL(
 #version 330 core
 layout ( location = 0 ) in vec2 Position;
 layout ( location = 1 ) in vec3 Color;

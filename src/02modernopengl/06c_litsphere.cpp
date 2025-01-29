@@ -46,7 +46,7 @@ public:
 
 Sphere::Sphere(double r, uint32_t latRes, uint32_t lonRes) : latRes(latRes), lonRes(lonRes),
     resolution((2*latRes-1)*lonRes + 2) {
-    progid = build_program();
+    progid = build_prog(vertex_shader_pervertex, frag_shader_common);
 //    progid = loadShaders("03gouraud.vert", "03gouraud.frag");
     double dlon = 2.0*numbers::pi / lonRes, dlat = numbers::pi / (2*latRes);
     double z;
