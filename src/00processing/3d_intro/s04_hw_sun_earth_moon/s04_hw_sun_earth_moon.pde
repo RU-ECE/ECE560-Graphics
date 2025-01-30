@@ -28,7 +28,10 @@ void draw() {
   popMatrix();
   
   rotateY(earthOrbit);
-  translate(400,0,0);
+  translate(600,0,0);
+  rotateY(-earthOrbit);
+  rotateZ(radians(23.5));
+  rotateY(earthRot);
   shape(earth);
 
   sunRot += dt * SUN_ROT_SPEED;
