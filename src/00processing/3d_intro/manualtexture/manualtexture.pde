@@ -27,6 +27,7 @@ void setup() {
     snaky.vertex(xnext, ynext-w, 1, 1);
     snaky.vertex(xnext, ynext, 1, 0);
   }
+
   snaky.endShape();
 }
 
