@@ -5,23 +5,22 @@ void setup() {
   textureMode(NORMAL);
   snaky = createShape();
   snaky.beginShape(QUADS);
-  snaky.texture(loadImage("saturnringcolor.jpg"));
-//  snaky.noStroke();
-
-  final float a = 400; // amplitude of the cos
-  final float w = 150;
-  final float xscale = 100;
+  snaky.texture(loadImage("redblue.png"));
+  
+  final float a = 2; // amplitude of the cos
   final float dt = PI/20;
-  for (float t = 0; t < 2*PI; t += dt) {
+  
+  for (float t = 0; t < 4*PI; t += dt) {
     // Define the 4 corners of the quad
-    float x = t*xscale, y = a*cos(t);
+    float x = t, y = cos(t);
     float nextt = t + dt;
-    float xnext = x + nextt*xscale, ynext = a * cos(nextt);
-    snaky.vertex(x, y, 0, 0, 0);
-    snaky.vertex(x, y-w, 0, 0, 1);
-    snaky.vertex(xnext, ynext-w, 0, 1, 1);
-    snaky.vertex(xnext, ynext, 0, 1, 1);
+    float xnext = nextt, ynext = cos(nextt);
+    snaky.vertex(x, y+a, 0, 0, 0);
+    snaky.vertex(x, y-a, 0, 0, 1);
+    snaky.vertex(xnext, ynext-a, 0, 1, 1);
+    snaky.vertex(xnext, ynext+a, 0, 1, 0);
   }
+
   snaky.endShape();
   z = -300;
 }
@@ -31,7 +30,8 @@ float rotA = 0;
 
 void draw() {
   background(0);
-  translate(width/2-500, height/2, z);
+  translate(0, height/2, z);
+  scale(100,200,1);
   shape(snaky);
 }
 
