@@ -24,4 +24,6 @@ PImage img = loadImage(filename);
 PShape s = createShape(SPHERE, 400);
 s.setTexture(img);
 
+camera()
+
 ```
