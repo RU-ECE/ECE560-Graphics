@@ -9,7 +9,7 @@ else
 	LIBS	:= common.o -lglfw $(shell pkg-config --libs glew) -lwebp
 endif
 
-all: bin/01window bin/02triangle bin/03gouraud \
+all: bin/01window bin/02triangle bin/02b_rect bin/03gouraud \
 	bin/04transform bin/04c_projection bin/05sphere1 \
 	bin/06sphere2 bin/06b_sphere3 bin/06c_litsphere bin/07visualizefunc
 
@@ -23,6 +23,9 @@ bin/01window: 01window.cc common.o
 	$(COMP) $< -o $@ $(LIBS)
 
 bin/02triangle: 02triangle.cc common.o
+	$(COMP) $< -o $@ $(LIBS)
+
+bin/02b_rect: 02b_rect.cc common.o
 	$(COMP) $< -o $@ $(LIBS)
 
 bin/03gouraud: 03gouraud.cc common.o
