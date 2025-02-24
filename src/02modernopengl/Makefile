@@ -7,11 +7,12 @@ ifeq ($(OS),Windows_NT)
 else
 	# assuming if not windows, then linux. This will break for unsupported OS or OS that does not declare properly. This will break on OSX.
 	LIBS	:= common.o -lglfw $(shell pkg-config --libs glew) -lwebp
+	MWELIBS	:= -lglfw $(shell pkg-config --libs glew)
 endif
 
 all: bin/01window bin/02triangle bin/02b_rect bin/03gouraud \
 	bin/04transform bin/04c_projection bin/05sphere1 \
-	bin/06sphere2 bin/06b_sphere3 bin/06c_litsphere bin/07visualizefunc
+	bin/06sphere2 bin/06b_sphere3 bin/06c_litsphere bin/07visualizefunc bin/mwe
 
 #this builds the single common object file used by all demos
 #which contains a standard main, loader for shaders,
@@ -60,6 +61,12 @@ bin/07visualizefunc:  07visualizefunc.cc  common.o
 
 bin/input2: input2.cpp
 	$(COMP) $< -o $@ $(LIBS) -lglut
+
+bin/mwe: mwe.cpp
+	$(COMP) $< -o $@ $(MWELIBS)
+
+bin/mwe2: mwe2.cpp
+	$(COMP) $< -o $@ $(MWELIBS)
 
 clean:
 	rm bin/*
