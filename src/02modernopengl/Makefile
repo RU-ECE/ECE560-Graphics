@@ -68,6 +68,9 @@ bin/mwe: mwe.cpp
 bin/mwe2: mwe2.cpp
 	$(COMP) $< -o $@ $(MWELIBS)
 
+bin/texture: texture.cpp
+	$(COMP) $< -o $@ $(MWELIBS) -lwebp
+
 bin/lighting: lighting.cpp
 	$(COMP) $< -o $@ $(MWELIBS) -lassimp
 

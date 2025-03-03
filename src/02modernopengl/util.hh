@@ -12,12 +12,13 @@
 #include <cstdint>
 #include <vector>
 #include <iostream>
+#include <fstream>
 #include <algorithm>
 #include <cmath>
 #include <GL/glew.h>        // GLEW must come first!
 #include <GLFW/glfw3.h>
 #include <glm/ext.hpp>
-
+#include <webp/decode.h>
 void check_status( GLuint obj, bool isShader ) {
     GLint status = GL_FALSE, log[ 1 << 11 ] = { 0 };
     ( isShader ? glGetShaderiv : glGetProgramiv )( obj, isShader ? GL_COMPILE_STATUS : GL_LINK_STATUS, &status );
@@ -118,6 +119,29 @@ void bindxyrgb(uint32_t vao) {
 	glEnableVertexAttribArray(1); // pass rgb to shader
 }
 
+void bindxyzuv(uint32_t vao) {
+	glBindVertexArray(vao);           // draw using vao and its vbo, and anything else inside it
+	glVertexAttribPointer(
+		0,                  // first parameter to shader, numbered 0
+		3,                  // 2 floating point numbers (x,y) z = 0
+		GL_FLOAT,           // type
+		GL_FALSE,           // normalized?
+		5*sizeof(float),    // there are 5 numbers total, this uses first 2
+		(void*)0            // array buffer offset
+	);
+	glVertexAttribPointer(
+		1,                     // 2nd parameter to shader, numbered 1
+		2,                     // 3 floating point numbers r,g,b
+		GL_FLOAT,              // all these values are float
+		GL_FALSE,              // normalized?
+		5*sizeof(float),       // there are 5 numbers total, this uses first 2
+		(void*)(2*sizeof(float)) // after x,y offset of rgb = 2
+	);
+
+	glEnableVertexAttribArray(0); // pass x,y to shader
+	glEnableVertexAttribArray(1); // pass rgb to shader
+}
+
 void unbind() {
 	glDisableVertexAttribArray(0);
 	glDisableVertexAttribArray(1);
@@ -164,6 +188,49 @@ public:
     }
 #endif
 };
+
+GLuint loadWebPTexture(const char* filePath) {
+    // Read the file into a buffer
+    std::ifstream file(filePath, std::ios::binary | std::ios::ate);
+    if (!file.is_open()) {
+        std::cerr << "Failed to open WebP file: " << filePath << std::endl;
+        return 0;
+    }
+    std::streamsize size = file.tellg();
+    file.seekg(0, std::ios::beg);
+    std::vector<char> buffer(size);
+    if (!file.read(buffer.data(), size)) {
+        std::cerr << "Failed to read WebP file: " << filePath << std::endl;
+        return 0;
+    }
+
+    // Decode the WebP image
+    int width, height;
+    uint8_t* data = WebPDecodeRGBA(reinterpret_cast<uint8_t*>(buffer.data()), size, &width, &height);
+    if (!data) {
+        std::cerr << "Failed to decode WebP image: " << filePath << std::endl;
+        return 0;
+    }
+
+    // Generate and bind a texture
+    GLuint textureID;
+    glGenTextures(1, &textureID);
+    glBindTexture(GL_TEXTURE_2D, textureID);
+
+    // Upload the texture data
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+
+    // Set texture parameters
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    // Free the image data
+    WebPFree(data);
+
+    return textureID;
+}
 
 void glmain(GLFWwindow* win);
 
