@@ -6,9 +6,15 @@
 #include <vector>
 #include <cstring>
 #include <cstdlib>
+#include <chrono>
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
+#include <GL/glew.h>
+#include <iomanip>
+
+using namespace std;
+using namespace std::chrono;
 
 class blockloader {
 protected:
@@ -38,6 +44,34 @@ public:
         h->docversion = docversion;
         h->num_entries = 0;
     }
+    blockloader(const char* filename) {
+        auto t0 = chrono::high_resolution_clock::now();
+        ifstream f(filename, ios::in | ios::binary);
+        f.seekg(0, ios::end);
+        size = f.tellg();
+        capacity = size;
+        data = (uint8_t*)aligned_alloc(64, size);
+        f.seekg(0, ios::beg);
+        f.read(reinterpret_cast<char*>(data), size);
+        header* h = (header*)data;
+        size = h->size;
+        auto t1 = chrono::high_resolution_clock::now();
+        cout << fixed << setprecision(3) 
+             << duration_cast<microseconds>(t1 - t0).count() / 1000.0 
+             << "ms" << endl;
+    }
+    // Return a pointer to the start of the data after the header
+    uint8_t* start_data() {
+        return data + sizeof(header);
+    }
+    void check_header(uint16_t type) {
+        header* h = (header*)data;
+        if (h->magic != 0x424c4b4c)
+            throw "invalid magic number";
+        if (h->type != type)
+            throw "unexpected type";
+    }
+
     void grow(size_t new_capacity) {
         if (capacity < new_capacity) {
             const uint8_t* old = data;
@@ -95,7 +129,9 @@ private:
     size_t sz;
 public:
     parasitic_vector() : data(nullptr), sz(0) {}
-    parasitic_vector(T* data, size_t sz) : data(data), sz(sz) {}
+    parasitic_vector(char*& data, size_t sz) : data((T*)data), sz(sz) {
+        data += sz * sizeof(T);
+    }
 
     T& operator[](size_t i) {
         return data[i];
@@ -118,6 +154,14 @@ private:
         NUM_BUFFERS = 4
     };
 
+    struct mesh_header {
+        uint32_t num_meshes;
+        uint32_t num_materials;
+        uint32_t num_vertices;
+        uint32_t num_texcoords;
+        uint32_t num_normals;
+        uint32_t num_indices;
+    };
     blockloader& bl;
     parasitic_vector<mesh_entry> meshes;
     parasitic_vector<material_entry> materials;
@@ -133,35 +177,36 @@ public:
   mesh(blockloader& bl, const char* filename) : bl(bl) {
     load_obj(filename, aiProcess_Triangulate | aiProcess_GenNormals | aiProcess_GenUVCoords);
   }
+  mesh(blockloader& bl);
   void init();
   void load_obj(const char filename[], int flags);
-  void render(uint32_t object_id);
+  void render();
   void save(const char filename[]);
 };
-
-using namespace std;
 
 void blockloader::save(const char filename[]) {
     ofstream f(filename, ios::out | ios::binary);
     f.write(reinterpret_cast<const char*>(data), size);
 }
 
-
-/**
- * Initialize the mesh for graphics purposes.
- */
-void mesh::init() {
-    #if 0
-    glGenVertexArrays(1, &vao);
-    glBindVertexArray(vao);
-    glGenBuffers(sizeof(buffers)/sizeof(uint32_t), buffers);
-    #endif
+mesh::mesh(blockloader& bl) : bl(bl) {
+    bl.check_header(0x0001); // TODO: register type numbers checking for mesh blockloader
+    mesh_header* mh = (mesh_header*)bl.start_data();
+    char* p = (char*)(mh + 1);
+    meshes = parasitic_vector<mesh_entry>(p, mh->num_meshes);
+    materials = parasitic_vector<material_entry>(p, mh->num_materials);
+    vertices = parasitic_vector<vec3f>(p, mh->num_vertices);
+    texcoords = parasitic_vector<vec2f>(p, mh->num_texcoords);
+    normals = parasitic_vector<vec3f>(p, mh->num_normals);
+    indices = parasitic_vector<vec3i>(p, mh->num_indices);
 }
+
 
 /**
  * Load an obj file and convert it to a blockloader file.
  */
 void mesh::load_obj(const char filename[], int flags) {
+    auto t0 = chrono::high_resolution_clock::now();
     Assimp::Importer importer;
     const aiScene* scene = importer.ReadFile(filename, 
         aiProcess_Triangulate |           // Ensure all faces are triangles
@@ -200,10 +245,10 @@ void mesh::load_obj(const char filename[], int flags) {
     indices.reserve(total_indices);
     for (unsigned int i = 0; i < scene->mNumMeshes; i++) {
         aiMesh* m = scene->mMeshes[i];
-        cout << "Mesh " << i << " has vert=" 
-            << m->mNumVertices << " faces=" << m->mNumFaces << endl;
+        //cout << "Mesh " << i << " has vert=" 
+        //     << m->mNumVertices << " faces=" << m->mNumFaces << endl;
         uint32_t num_vertices = m->mNumVertices;
-        uint32_t num_indices = m->mNumFaces * 3;
+        uint32_t num_indices = m->mNumFaces; // indices stores 3 per entry
         materials.emplace_back(m->mMaterialIndex);
         meshes.emplace_back(m->mMaterialIndex,
                             num_indices,
@@ -211,28 +256,83 @@ void mesh::load_obj(const char filename[], int flags) {
                             num_indices);
         for (unsigned int j = 0; j < m->mNumVertices; j++) {
             vertices.emplace_back(m->mVertices[j].x, m->mVertices[j].y, m->mVertices[j].z);
-            texcoords.emplace_back(m->mTextureCoords[0][j].x, m->mTextureCoords[0][j].y);
-            normals.emplace_back(m->mNormals[j].x, m->mNormals[j].y, m->mNormals[j].z);
+        }
+        if (m->HasTextureCoords(0)) {
+            for (unsigned int j = 0; j < m->mNumVertices; j++) {
+                texcoords.emplace_back(m->mTextureCoords[0][j].x, m->mTextureCoords[0][j].y);
+            }
+        }
+        if (m->HasNormals()) {
+            for (unsigned int j = 0; j < m->mNumVertices; j++) {
+                normals.emplace_back(m->mNormals[j].x, m->mNormals[j].y, m->mNormals[j].z);
+            }
         }
         for (unsigned int j = 0; j < m->mNumFaces; j++) {
             aiFace& f = m->mFaces[j];
             indices.emplace_back(f.mIndices[0], f.mIndices[1], f.mIndices[2]);
         }
     }
+    auto t1 = chrono::high_resolution_clock::now();
+    cout << fixed << setprecision(3) 
+         << duration_cast<microseconds>(t1 - t0).count() / 1000.0 
+         << "ms" << endl;
 
-    size_t total_size = meshes.size() * sizeof(mesh_entry) +
+    size_t total_size = sizeof(mesh_header) +
+                       meshes.size() * sizeof(mesh_entry) +
                        materials.size() * sizeof(material_entry) +
                        vertices.size() * sizeof(vec3f) +
                        texcoords.size() * sizeof(vec2f) +
                        normals.size() * sizeof(vec3f) +
                        indices.size() * sizeof(vec3i);
     bl.grow(total_size);
+    mesh_header* mh = (mesh_header*)bl.start_data();
+    mh->num_meshes = meshes.size();
+    mh->num_materials = materials.size();
+    mh->num_vertices = vertices.size();
+    mh->num_texcoords = texcoords.size();
+    mh->num_normals = normals.size();
+    mh->num_indices = indices.size();
     bl.append(meshes.data(), meshes.size() * sizeof(mesh_entry));
     bl.append(materials.data(), materials.size() * sizeof(material_entry));
     bl.append(vertices.data(), vertices.size() * sizeof(vec3f));
     bl.append(texcoords.data(), texcoords.size() * sizeof(vec2f));
     bl.append(normals.data(), normals.size() * sizeof(vec3f));
     bl.append(indices.data(), indices.size() * sizeof(vec3i));
+}
+
+/**
+ * Initialize the mesh for graphics purposes.
+ */
+void mesh::init() {
+    glGenVertexArrays(1, &vao);
+    glBindVertexArray(vao);
+    glGenBuffers(sizeof(buffers)/sizeof(uint32_t), buffers);
+    
+    // Use the parasitic vector's data pointer and size
+    glBindBuffer(GL_ARRAY_BUFFER, buffers[VERTEX_BUFFER]);
+    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(vec3f), &vertices[0], GL_STATIC_DRAW);
+    
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[INDEX_BUFFER]);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(vec3i), &indices[0], GL_STATIC_DRAW);
+}
+
+/**
+ * Render all objects in the mesh
+ * Right now, just as lines.
+ * TODO: add many different rendering methods
+ */
+void mesh::render() {
+    glBindVertexArray(vao);
+    glBindBuffer(GL_ARRAY_BUFFER, buffers[VERTEX_BUFFER]);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[INDEX_BUFFER]);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);  // wireframe mode
+    for (unsigned int i = 0; i < meshes.size(); i++) {
+        mesh_entry& me = meshes[i];
+        glDrawElements(GL_TRIANGLES, me.num_indices * 3, GL_UNSIGNED_INT, 
+                      (void*)(me.base_index * sizeof(vec3i)));
+    }
 }
 
 void mesh::save(const char filename[]) {

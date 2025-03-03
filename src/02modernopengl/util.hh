@@ -9,6 +9,7 @@
     To make a better, though more complicated system we could separate out header and implementation.
     For now, keeping it simple.
 */
+#include <cstdint>
 #include <vector>
 #include <iostream>
 #include <algorithm>
@@ -156,20 +157,23 @@ public:
 
     // override this function to generate different 3d cameras that fly around
     virtual void animate(float dt) = 0;
-
+#if 0
     void view(uint32_t location, const glm::mat4& transform) {
         glm::mat4 m = proj * view * transform;
         glUniformMatrix4fv(location, 1, GL_FALSE, &m[0][0]);
     }
+#endif
 };
+
+void glmain(GLFWwindow* win);
 
 int main(int argc, char* argv[]) {
 	try {
 		win = createWindow(1000, 800, "OpenGL Demo"); // Move this to the start
-		glmain();
+		glmain(win);
 		glfwTerminate();		// Close OpenGL window and terminate GLFW
 	} catch (const char* msg) {
-		cerr << msg << '\n';
+		std::cerr << msg << '\n';
 		exit(-1);
 	}
 	return 0;

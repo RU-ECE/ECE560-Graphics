@@ -1,5 +1,5 @@
 DEBUG	:=	-g -std=c++20
-OPT	:=	#-O2
+OPT	:=	-O2
 COMP	:= g++ $(OPT) $(DEBUG)
 
 ifeq ($(OS),Windows_NT)
@@ -68,5 +68,15 @@ bin/mwe: mwe.cpp
 bin/mwe2: mwe2.cpp
 	$(COMP) $< -o $@ $(MWELIBS)
 
+bin/lighting: lighting.cpp
+	$(COMP) $< -o $@ $(MWELIBS) -lassimp
+
+bin/convert_obj_blockloader: convert_obj_blockloader.cpp mesh.hh
+	$(COMP) $< -o $@ $(MWELIBS) -lassimp
+
+bin/testblockload: testblockload.cpp mesh.hh
+	$(COMP) $< -o $@ $(MWELIBS) -lassimp
+
 clean:
 	rm bin/*
+

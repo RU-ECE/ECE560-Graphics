@@ -17,7 +17,21 @@
 */
 
 #include "lighting_technique.h"
-#include "common/common.hh"
+
+
+void DirectionalLight::CalcLocalDirection(const Matrix4f& World)
+{
+    Matrix3f World3f(World);  // Initialize using the top left corner
+
+    // Inverse local-to-world transformation using transpose
+    // (assuming uniform scaling)
+    Matrix3f WorldToLocal = World3f.Transpose();
+
+    LocalDirection = WorldToLocal * WorldDirection;
+
+    LocalDirection = LocalDirection.Normalize();
+}
+
 
 LightingTechnique::LightingTechnique()
 {
@@ -28,19 +42,42 @@ bool LightingTechnique::Init()
     if (!Technique::Init()) {
         return false;
     }
-    GLuint lightingid = build_prog("lighting.vs", "lighting.fs");
+
+    if (!AddShader(GL_VERTEX_SHADER, "lighting.vs")) {
+        return false;
+    }
+
+    if (!AddShader(GL_FRAGMENT_SHADER, "lighting.fs")) {
+        return false;
+    }
+
+    if (!Finalize()) {
+        return false;
+    }
 
     WVPLoc = GetUniformLocation("gWVP");
     samplerLoc = GetUniformLocation("gSampler");
-    lightColorLoc = GetUniformLocation("gLight.Color");
-    lightAmbientIntensityLoc = GetUniformLocation("gLight.AmbientIntensity");
-    materialAmbientColorLoc = GetUniformLocation("gMaterial.AmbientColor");
+    samplerSpecularExponentLoc = GetUniformLocation("gSamplerSpecularExponent");
+    materialLoc.AmbientColor = GetUniformLocation("gMaterial.AmbientColor");
+    materialLoc.DiffuseColor = GetUniformLocation("gMaterial.DiffuseColor");
+    materialLoc.SpecularColor = GetUniformLocation("gMaterial.SpecularColor");
+    dirLightLoc.Color = GetUniformLocation("gDirectionalLight.Color");
+    dirLightLoc.AmbientIntensity = GetUniformLocation("gDirectionalLight.AmbientIntensity");
+    dirLightLoc.Direction = GetUniformLocation("gDirectionalLight.Direction");
+    dirLightLoc.DiffuseIntensity = GetUniformLocation("gDirectionalLight.DiffuseIntensity");
+    CameraLocalPosLoc = GetUniformLocation("gCameraLocalPos");
 
-    if (lightAmbientIntensityLoc == 0xFFFFFFFF ||
-        WVPLoc == 0xFFFFFFFF ||
+    if (WVPLoc == 0xFFFFFFFF ||
         samplerLoc == 0xFFFFFFFF ||
-        lightColorLoc == 0xFFFFFFFF ||
-        materialAmbientColorLoc == 0xFFF)
+        samplerSpecularExponentLoc == 0xFFFFFFFF ||
+        materialLoc.AmbientColor == 0xFFFFFFFF ||
+        materialLoc.DiffuseColor == 0xFFFFFFFF ||
+        materialLoc.SpecularColor == 0xFFFFFFFF ||
+        CameraLocalPosLoc == 0xFFFFFFFF ||
+        dirLightLoc.Color == 0xFFFFFFFF ||
+        dirLightLoc.DiffuseIntensity == 0xFFFFFFFF ||
+        dirLightLoc.Direction == 0xFFFFFFFF ||
+        dirLightLoc.AmbientIntensity == 0xFFFFFFFF)
     {
         return false;
     }
@@ -48,7 +85,8 @@ bool LightingTechnique::Init()
     return true;
 }
 
-void LightingTechnique::SetWVP(const Matrix4f& WVP) {
+void LightingTechnique::SetWVP(const Matrix4f& WVP)
+{
     glUniformMatrix4fv(WVPLoc, 1, GL_TRUE, (const GLfloat*)WVP.m);
 }
 
@@ -58,13 +96,31 @@ void LightingTechnique::SetTextureUnit(unsigned int TextureUnit)
     glUniform1i(samplerLoc, TextureUnit);
 }
 
-
-void LightingTechnique::SetLight(const BaseLight& light) {
-    glUniform3f(lightColorLoc, light.color.r, light.color.g, light.color.b);
-    glUniform1f(lightAmbientIntensityLoc, light.ambient_intensity);
+void LightingTechnique::SetSpecularExponentTextureUnit(unsigned int TextureUnit)
+{
+    glUniform1i(samplerSpecularExponentLoc, TextureUnit);
 }
 
 
-void LightingTechnique::SetMaterial(const Material& material) {
-    glUniform3f(materialAmbientColorLoc, material.ambient_color.r, material.ambient_color.g, material.ambient_color.b);
+void LightingTechnique::SetDirectionalLight(const DirectionalLight& Light)
+{
+    glUniform3f(dirLightLoc.Color, Light.Color.x, Light.Color.y, Light.Color.z);
+    glUniform1f(dirLightLoc.AmbientIntensity, Light.AmbientIntensity);
+    Vector3f LocalDirection = Light.GetLocalDirection();
+    glUniform3f(dirLightLoc.Direction, LocalDirection.x, LocalDirection.y, LocalDirection.z);
+    glUniform1f(dirLightLoc.DiffuseIntensity, Light.DiffuseIntensity);
+}
+
+
+void LightingTechnique::SetCameraLocalPos(const Vector3f& CameraLocalPos)
+{
+    glUniform3f(CameraLocalPosLoc, CameraLocalPos.x, CameraLocalPos.y, CameraLocalPos.z);
+}
+
+
+void LightingTechnique::SetMaterial(const Material& material)
+{
+    glUniform3f(materialLoc.AmbientColor, material.AmbientColor.r, material.AmbientColor.g, material.AmbientColor.b);
+    glUniform3f(materialLoc.DiffuseColor, material.DiffuseColor.r, material.DiffuseColor.g, material.DiffuseColor.b);
+    glUniform3f(materialLoc.SpecularColor, material.SpecularColor.r, material.SpecularColor.g, material.SpecularColor.b);
 }
