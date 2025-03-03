@@ -1,5 +1,5 @@
 DEBUG	:=	-g -std=c++20
-OPT	:=	-O2
+OPT	:=	#-O2
 COMP	:= g++ $(OPT) $(DEBUG)
 
 ifeq ($(OS),Windows_NT)
