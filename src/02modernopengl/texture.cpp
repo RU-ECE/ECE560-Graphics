@@ -17,13 +17,14 @@ void glmain(GLFWwindow* win) {
 	uint32_t vbo = make_static_vbo(xyzuv, sizeof(xyzuv));
     GLuint textureID = loadWebPTexture("earth.webp"); // Load the texture
 
-	glUseProgram(programID);      		// Use our shader
 	bindxyzuv(vao);
+	const uint32_t textureLocation = glGetUniformLocation(programID, "textureSampler");
+	glUseProgram(programID);      		// Use our shader
+	glUniform1i(textureLocation, 0);
 	do {
 		glClear( GL_COLOR_BUFFER_BIT );  	// Clear the screen
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, textureID);
-		glUniform1i(glGetUniformLocation(programID, "textureSampler"), 0);
 
 		glBindVertexArray(vao);
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0); // Position
