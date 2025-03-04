@@ -23,22 +23,22 @@ protected:
     size_t size; // current size of the bytes used in the file
 public:
     struct header {
-        uint64_t size; // total size of the blockloader file
-        uint32_t magic; // "BLKL"
-        uint16_t type;
-        uint16_t version;
-        uint64_t authorid;
-        uint32_t docid;
-        uint32_t docversion;
+        uint32_t magic;      // "BLKL" or "BLKC" for LZMA compression?
+        uint16_t type;       // type of entire file (perhaps later, just have types for each block inside?)
+        uint16_t version;    // version of this blockloader file
+        uint64_t size;       // total size of the blockloader file aligned to 64-bit boundary
+        uint64_t authorid;   // unique author id so all meta information can be stored on a server not here
+        uint32_t docid;      // unique document id per author. Global unique id is authorid:docid
+        uint32_t docversion; // version of the document
         uint32_t num_entries; // number of individual blocks in the file
     };
     blockloader(size_t initial_capacity, uint16_t type, uint16_t version, uint64_t authorid, uint32_t docid, uint32_t docversion)
      : data((uint8_t*)aligned_alloc(64, initial_capacity)), capacity(initial_capacity), size(sizeof(header)) {
         header* h = (header*)data;
-        h->size = size;
         h->magic = 0x424c4b4c;
         h->type = type;
         h->version = version;
+        h->size = size;
         h->authorid = authorid;
         h->docid = docid;
         h->docversion = docversion;
@@ -80,6 +80,13 @@ public:
             free((void*)old);
             capacity = new_capacity;
         }
+    }
+    void insert(size_t offset, size_t sz, const void* src) {
+        if (size + sz > capacity) {
+            grow(size + sz);
+        }
+        memcpy(this->data + offset, src, sz);
+        size += sz;
     }
     void append(const void* src, size_t sz) {
         if (size + sz > capacity) {
