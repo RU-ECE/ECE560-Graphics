@@ -30,7 +30,13 @@ public:
         uint64_t authorid;   // unique author id so all meta information can be stored on a server not here
         uint32_t docid;      // unique document id per author. Global unique id is authorid:docid
         uint32_t docversion; // version of the document
-        uint32_t num_entries; // number of individual blocks in the file
+        uint16_t num_entries; // number of individual blocks in the file
+        uint16_t num_blocks; // number of blocks in the file
+    };
+    struct block_entry {
+        uint32_t type;
+        uint32_t size;
+        uint32_t offset;
     };
     blockloader(size_t initial_capacity, uint16_t type, uint16_t version, uint64_t authorid, uint32_t docid, uint32_t docversion)
      : data((uint8_t*)aligned_alloc(64, initial_capacity)), capacity(initial_capacity), size(sizeof(header)) {
