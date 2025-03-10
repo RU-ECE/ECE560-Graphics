@@ -1,18 +1,30 @@
 DEBUG	:=	-g -std=c++20
-OPT	:=	-O2
+OPT	:=	#-O2
 COMP	:= g++ $(OPT) $(DEBUG)
 
 ifeq ($(OS),Windows_NT)
 	LIBS	:= common.o -I/mingw64/include/GL -L/mingw64/lib -lOpenGL32 -lglfw3 -lglew32
 else
-	# assuming if not windows, then linux. This will break for unsupported OS or OS that does not declare properly. This will break on OSX.
-	LIBS	:= common.o -lglfw $(shell pkg-config --libs glew) -lwebp
-	MWELIBS	:= -lglfw $(shell pkg-config --libs glew)
+	UNAME_S := $(shell uname -s)
+	ifeq ($(UNAME_S),Darwin)
+		LIBS	:= common.o -framework OpenGL -lglfw -lGLEW
+		MWELIBS	:= -framework OpenGL -lglfw -lGLEW
+	else
+		# Linux
+		LIBS	:= common.o -lglfw $(shell pkg-config --libs glew) -lwebp
+		MWELIBS	:= -lglfw $(shell pkg-config --libs glew) -lwebp
+	endif
 endif
 
-all: bin/01window bin/02triangle bin/02b_rect bin/03gouraud \
+#TODO: bin/02b_rect
+#TODO: bin/06c_litsphere 
+#TODO: bin/lighting
+
+all: bin/01window bin/02triangle bin/03gouraud \
 	bin/04transform bin/04c_projection bin/05sphere1 \
-	bin/06sphere2 bin/06b_sphere3 bin/06c_litsphere bin/07visualizefunc bin/mwe
+	bin/06sphere2 bin/06b_sphere3 bin/07visualizefunc \
+	bin/mwe bin/mwe2 bin/texture \
+	bin/convert_obj_blockloader bin/testblockload
 
 #this builds the single common object file used by all demos
 #which contains a standard main, loader for shaders,

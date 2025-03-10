@@ -64,7 +64,7 @@ void main()
 )GLSL";
 
 // this fragment shader can be used for any vertex shader that uses rgb colors stored per vertex
-const char* const frag_shader_common = 1 + R"GLSL(
+const char* const frag_shader_common = R"GLSL(
 #version 330 core
 in VertexData
 {
@@ -79,7 +79,7 @@ void main()
 
 
 // fragment shader for a textured material with lighting
-const char* const frag_shader_lighting = 1 + R"GLSL(
+const char* const frag_shader_lighting = R"GLSL(
 #version 330
 
 in vec2 TexCoord0;
