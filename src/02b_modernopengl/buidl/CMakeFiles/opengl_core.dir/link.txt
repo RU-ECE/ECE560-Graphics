@@ -1,0 +1,2 @@
+/usr/bin/ar qc libopengl_core.a CMakeFiles/opengl_core.dir/graphics_core.cpp.o
+/usr/bin/ranlib libopengl_core.a

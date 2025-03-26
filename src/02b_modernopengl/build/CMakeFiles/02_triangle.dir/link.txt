@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/02_triangle.dir/src/opengl/02_triangle.cpp.o -o ../bin/02_triangle  libopengl_core.a /usr/lib/x86_64-linux-gnu/libGLEW.so /usr/lib/x86_64-linux-gnu/libGLX.so /usr/lib/x86_64-linux-gnu/libOpenGL.so /usr/lib/x86_64-linux-gnu/libglfw.so.3.3 -lwebp 

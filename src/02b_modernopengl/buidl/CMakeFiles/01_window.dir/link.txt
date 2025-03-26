@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/01_window.dir/src/opengl/01_window.cpp.o -o ../bin/01_window  libopengl_core.a /usr/lib/x86_64-linux-gnu/libGLEW.so /usr/lib/x86_64-linux-gnu/libGL.so /usr/lib/x86_64-linux-gnu/libGLU.so 
