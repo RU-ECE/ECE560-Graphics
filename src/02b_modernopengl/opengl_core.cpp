@@ -1,6 +1,7 @@
 #include "graphics_core.hh"
 #include <string>
 #include <vector>
+#include <unordered_map>
 #include <fstream>
 #include <algorithm>
 #include <iomanip>
@@ -10,6 +11,7 @@ using namespace std;
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include "ex.hh"
 GLFWwindow* win = nullptr;
 
 app_base::~app_base() {}  // Define virtual destructor
@@ -137,6 +139,77 @@ void unbind(uint32_t vao, uint32_t vbo) {
 	glBindBuffer(GL_ARRAY_BUFFER, 0); // stop drawing using vbo
 }
 
+inline uint32_t key_event(int action, int mods, int key) {
+    return (action << 16) | (mods << 12) | key;
+}
+
+uint32_t debug_level;
+language current_lang;
+
+typedef void (*FuncNoParam)();
+unordered_map<int, int> event_map;
+vector<FuncNoParam> actions;
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
+    auto it = event_map.find(key);  // Use auto and find() instead of direct comparison
+    if (it == event_map.end()) {
+        return;
+    }
+    uint32_t action_id = it->second;
+    if (action_id > actions.size()) {
+        log(__FILE__, __LINE__, error_type::out_of_bounds, "Unknown action", action_id);
+        return;
+    }
+    FuncNoParam f = actions[action_id];
+    if (f == nullptr) {
+        log(__FILE__, __LINE__, error_type::input, "Unknown action", action);
+        return;
+    }
+    f();
+}
+
+
+void pan_up() {
+    cerr << "pan up\n";
+}
+
+void pan_down() {
+    cerr << "pan down\n";
+}
+
+void pan_left() {
+    cerr << "pan left\n";
+}
+
+void pan_right() {
+    cerr << "pan right\n";
+}
+
+void zoom_in() {
+    cerr << "zoom in\n";
+}
+
+void zoom_out() {
+    cerr << "zoom out\n";
+}
+
+constexpr uint32_t NONE = 0;
+
+void build_event(uint32_t event_type, uint32_t modifiers, uint32_t key,
+                FuncNoParam f) {
+    int action_id = actions.size();
+    actions.push_back(f);
+    uint32_t event = key_event(event_type, modifiers, key);
+    event_map[event] = action_id;
+}
+
+void std_3d_camera_controls() {
+  build_event(GLFW_PRESS, NONE, GLFW_KEY_UP, pan_up);
+  build_event(GLFW_PRESS, NONE, GLFW_KEY_DOWN, pan_down);
+  build_event(GLFW_PRESS, NONE, GLFW_KEY_LEFT, pan_left);
+  build_event(GLFW_PRESS, NONE, GLFW_KEY_RIGHT, pan_right);
+  build_event(GLFW_PRESS, NONE, GLFW_KEY_W, zoom_in);
+  build_event(GLFW_PRESS, NONE, GLFW_KEY_S, zoom_out);
+}
 
 /**
  * Create a window and initialize OpenGL context
@@ -149,9 +222,7 @@ void unbind(uint32_t vao, uint32_t vbo) {
  */
 GLFWwindow* createWindow(uint32_t w, uint32_t h, const char title[], uint32_t major = 3, uint32_t minor = 3) {
 	// Initialise GLFW
-	if( !glfwInit() )	{
-		throw "Failed to initialize GLFW";
-	}
+	oglcheck_msg(glfwInit(), error_type::initialization, "GLFW");
 
 	glfwWindowHint(GLFW_SAMPLES, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, major);
@@ -175,7 +246,7 @@ GLFWwindow* createWindow(uint32_t w, uint32_t h, const char title[], uint32_t ma
 
 	// Ensure we can capture the escape key to quit
 	glfwSetInputMode(win, GLFW_STICKY_KEYS, GL_TRUE);
-
+    glfwSetKeyCallback(win, key_callback);
 	return win;
 }
 
@@ -200,7 +271,10 @@ int main(int argc, char* argv[]) {
 		glfwTerminate();
 	} catch (const char* msg) {
 		cerr << msg << '\n';
+        cerr << "REPLACE THIS WITH throw ex!\n";
 		exit(-1);
+	} catch (ex& e) {
+		cerr << e << '\n';
 	}
 	return 0;
 }

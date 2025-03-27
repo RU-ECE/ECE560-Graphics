@@ -33,6 +33,14 @@
 cmake_minimum_required(VERSION 3.10)
 project(demos)
 
+# Add near the top of the file, after project()
+if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE Debug)
+endif()
+
+# Add debug flags
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g")
+
 # Set OpenGL preference to GLVND before finding packages
 set(OpenGL_GL_PREFERENCE GLVND)
 
@@ -74,7 +82,9 @@ add_opengl_executable(01_window "01_window.cpp")
 add_opengl_executable(02_triangle "02_triangle.cpp")
 add_opengl_executable(03_trianglecolor "03_trianglecolor.cpp")
 add_opengl_executable(04_gouraud "04_gouraud.cpp")
-#add_opengl_executable(05_transform "05_transform.cpp")
+add_opengl_executable(05_rect "05_rect.cpp")
+add_opengl_executable(06_transform "06_transform.cpp")
+add_opengl_executable(08_keymap "08_keymap.cpp")
 #add_opengl_executable(06_projection "06_projection.cpp")
 #add_opengl_executable(07_sphere "07_sphere.cpp")
 #add_opengl_executable(08_rectangle_lighting "08_rectangle_lighting.cpp")
