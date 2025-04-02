@@ -1,0 +1,5 @@
+/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/common/build/CMakeFiles/opengl_core.dir
+/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/common/build/CMakeFiles/convert_obj_blockloader.dir
+/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/common/build/CMakeFiles/loadmodel.dir
+/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/common/build/CMakeFiles/edit_cache.dir
+/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/common/build/CMakeFiles/rebuild_cache.dir

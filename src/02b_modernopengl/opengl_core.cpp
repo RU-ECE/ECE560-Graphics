@@ -16,6 +16,36 @@ GLFWwindow* win = nullptr;
 
 app_base::~app_base() {}  // Define virtual destructor
 
+void app_base::pan_left() {}
+void app_base::pan_right() {}
+void app_base::pan_up() {}
+void app_base::pan_down() {}
+void app_base::zoom_in() {}
+void app_base::zoom_out() {}
+
+void app_base::rotate_left() {}
+void app_base::rotate_right() {}
+void app_base::rotate_up() {}
+void app_base::rotate_down() {}
+void app_base::rotate_clockwise() {}
+void app_base::rotate_counterclockwise() {}
+
+void app_base::scale_up() {}
+void app_base::scale_down() {}
+
+void app_base::toggle_fullscreen() {}
+void app_base::toggle_wireframe() {}
+void app_base::toggle_culling() {}
+void app_base::toggle_depth_testing() {}
+void app_base::toggle_blending() {}
+void app_base::toggle_face_culling() {}
+void app_base::toggle_depth_buffering() {}
+void app_base::toggle_stencil_buffering() {}
+void app_base::toggle_msaa() {}
+void app_base::toggle_v_sync() {}
+void app_base::toggle_gamma_correction() {}
+
+
 void check_status( GLuint obj, bool isShader ) {
     GLint status = GL_FALSE, log[ 1 << 11 ] = { 0 };
     ( isShader ? glGetShaderiv : glGetProgramiv )( obj, isShader ? GL_COMPILE_STATUS : GL_LINK_STATUS, &status );
@@ -150,7 +180,8 @@ typedef void (*FuncNoParam)();
 unordered_map<int, int> event_map;
 vector<FuncNoParam> actions;
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
-    auto it = event_map.find(key);  // Use auto and find() instead of direct comparison
+    uint32_t event = key_event(action, mods, key);
+    auto it = event_map.find(event);  // Use auto and find() instead of direct comparison
     if (it == event_map.end()) {
         return;
     }

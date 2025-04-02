@@ -46,6 +46,13 @@ public:
     virtual void init() = 0;
     virtual void render() = 0;
     virtual void cleanup() = 0;
+
+    virtual void pan_left();
+    virtual void pan_right();
+    virtual void pan_up();
+    virtual void pan_down();
+    virtual void zoom_in();
+    virtual void zoom_out();
 };
 
 // API-specific includes and definitions
@@ -69,6 +76,10 @@ public:
     #endif
 
 #endif
+
+void std_3d_camera_controls(); // controls moving moving around a 3d world
+void std_2d_camera_controls(); // controls moving a 2d plane in ortho projection
+void std_document_controls();  // controls for moving around a document-type interface
 
 #if OPENGL
 void dump(glm::mat4& mat);

@@ -1,0 +1,1 @@
+/usr/bin/c++ -g -g CMakeFiles/convert_obj_blockloader.dir/convert_obj_blockloader.cpp.o -o /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/bin/convert_obj_blockloader  -lassimp 

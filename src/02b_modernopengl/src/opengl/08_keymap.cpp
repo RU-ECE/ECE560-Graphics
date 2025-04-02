@@ -13,9 +13,10 @@ private:
     uint32_t vao;
     uint32_t vbo;
     glm::mat4 m1, m2;
-    float da;
 public:
     void init() override {
+        std_3d_camera_controls(); // Initialize the camera controls
+
         programID = build_prog(vs_gouraudtransform, fs_common);
 
         const vector<float> vert = {
@@ -24,19 +25,24 @@ public:
              0.0f, +0.5f, 0,0,1
         };
         make_vao_vbo(vao, vbo, vert.data(), vert.size());
-        m1 = glm::scale(glm::mat4(1.0f), glm::vec3(2.0f, 2.0f, 1.0f));
+        m1 = glm::scale(glm::mat4(1.0f), glm::vec3(1.2f, 0.8f, 1.0f));
         m2 = glm::translate(glm::mat4(1.0f), glm::vec3(1.0f, 1.0f, 0.0f));
-        da = 0.01f;
     }
-	
+    void pan_left() {
+        cerr << "pan_left" << endl;
+        m1 = glm::translate(m1, glm::vec3(-0.1f, 0.0f, 0.0f));
+    }
+    void pan_right() {
+        cerr << "pan_right" << endl;
+        m1 = glm::translate(m1, glm::vec3(0.1f, 0.0f, 0.0f));
+    }
     void render() override {
         bindxyrgb(vao, vbo);
         glUseProgram(programID);
         glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
         int modelLoc = glGetUniformLocation(programID, "transform");
-        m1 = glm::rotate(m1, da, glm::vec3(0.0f, 1.0f, 0.0f));
         glUniformMatrix4fv(modelLoc, 1, GL_FALSE, &m1[0][0]);
-        glDrawArrays(GL_TRIANGLE_STRIP, 0, 3);
+        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
         //glUniformMatrix4fv(modelLoc, 1, GL_FALSE, &m2[0][0]);
         //glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
         unbind(vao, vbo);

@@ -1,0 +1,9 @@
+/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/build/CMakeFiles/01_window.dir
+/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/build/CMakeFiles/02_triangle.dir
+/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/build/CMakeFiles/03_trianglecolor.dir
+/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/build/CMakeFiles/04_gouraud.dir
+/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/build/CMakeFiles/05_rect.dir
+/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/build/CMakeFiles/06_transform.dir
+/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/build/CMakeFiles/08_keymap.dir
+/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/build/CMakeFiles/edit_cache.dir
+/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/build/CMakeFiles/rebuild_cache.dir

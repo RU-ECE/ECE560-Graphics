@@ -1,0 +1,125 @@
+# Gen 2 ECE560 Graphics Course Materials for Lecture and homework basis
+
+Author: Dov Kruger
+
+This directory contains all the code to be used in ECE560 Graphics (Rutgers)
+It is based on experience from the first semester, and an effort to dramatically
+reduce the code complexity of learning modern OpenGL and Vulkan for the first
+time.
+
+There are a number of directories, shown here:
+
+- [C++](C++) This directory contains example code and links to C++ resources.
+  If your background is not good enough you can look here for information on
+  what you need to know about C++ to handle the OpenGL and Vulkan code.
+- [common](common) This directory contains utility code shared by:
+  - 02opengl,
+  - 03raytracing
+  - 04vulkan
+  Code shared includes:
+  - ex.hh An demonstration simplified error reporting facility that works
+    in multiple languages
+  - graphics.core.hh
+  - opengl.core.cpp   The code shared in common by all 02opengl code
+  - vulkan.core.cpp   The code shared in common by all 04vulkan code
+  - webp.hh	      Code used in both opengl.core.cpp and vulkan.core.cpp to load and save images in google's WebP format (most compact). Many tools will not yet work on webp format, but it is the most compact out there. Use your browser or gimp to look at pictures.
+  
+- [01processing](01processing) Simplified graphics in Java. Nothing to do with the rest of the course or the other directories. This code illustrates how OpenGL works (it wraps OpenGL) but it is far simpler)
+- [02opengl](opengl) This is modern OpenGL examples, with a framework designed
+  to minimize the code in each demo. All shared code in in common/. There is
+  code in that directory that is shared between demos in Open
+
+Setup
+
+For Windows, I recommend starting with msys2. If that doesn't work, try Windows Subsystem for Linux (WSL).
+
+For msys2:
+
+- [Download msys2](https://www.msys2.org/)
+- Run the msys2 shell (64-bit) and execute the following commands to install:
+| Command Block                                | Installs...                                     |
+|----------------------------------------------|-----------------------------------------------------------|
+| ```bash                                      |                                                           |
+| pacman -S mingw-w64-x86_64-gcc               | C++ compiler and standard libraries.                      |
+|                                              |                                                           |
+|                                              | build tools.                                              |
+| pacman -S make                               | old, quirky build tool but still core dev knowledge       |
+| pacman -S cmake                              | tool that automatically builds makefile (complicated)     |
+| pacman -S ninja                              | optional, ultrafast replacment for make for huge projects |
+| pacman -S openssh                            | ssh allows remote login and authentication for github     |
+| pacman -S mingw-w64-x86_64-lzma              | lzma data compression                                     |
+|                                              | libraries for graphics and multimedia.                    |
+| pacman -S --needed      \                    | Only installs if not already present.                     |
+| mingw-w64-x86_64-glfw   \                    | GLFW for windowing in graphics.                           |
+| mingw-w64-x86_64-glew                        | GLEW for OpenGL extension loading.                        |
+| mingw-w64-x86_64-opengl                      | OpenGL library for graphics rendering.                    |
+| mingw-w64-x86_64-assimp                      | library to import 3d models                               |
+| mingw-w64-x86_64-ffmpeg                      | FFmpeg for multimedia processing.                         |
+| mingw-w64-x86_64-libwebp                                                | libwebp for WebP image format support.              |
+| ```                                                                    |                                                     |
+
+
+
+```bash
+pacman -S mingw-w64-x86_64-gcc        # c++ compiler and libraries
+pacman -S make cmake                  # build tools make and cmake
+pacman -S gdb                         # simple text-based debugger
+pacman -S cgdb                        # in some ways better text-based debugger
+pacman -S openssh                     # ssh (remove login) to other computers
+pacman -S --needed \
+  mingw-w64-x86_64-glfw \
+  mingw-w64-x86_64-glew \
+  mingw-w64-x86_64-opengl \
+  mingw-w64-x86_64-assimp \
+  mingw-w64-x86_64-ffmpeg \
+  mingw-w64-x86_64-libwebp \
+  mingw-w64-x86_64-vulkan-headers
+```
+- Follow instructions for installing msys2 in visual studio code
+  - [Install vscode if you don't already have it]()
+  - [instructions for g++ under vscode](https://code.visualstudio.com/docs/cpp/config-mingw)
+  -
+```batch
+@echo off
+echo Installing VS Code extensions for MSYS2 development...
+
+:: Install C++ formatting (C/C++ extension by Microsoft)
+code --install-extension ms-vscode.cpptools
+
+:: Install Codeium for AI-based autocompletion
+code --install-extension Codeium.codeium
+
+:: Install Live Share for collaboration
+code --install-extension ms-vsliveshare.vsliveshare
+
+:: Install Makefile Tools for Makefile support
+code --install-extension ms-vscode.makefile-tools
+
+:: Install CMake Tools for CMake support
+code --install-extension ms-vscode.cmake-tools
+
+echo Installation complete. Restart VS Code if needed.
+pause
+```
+
+On Mac we have some experience from the first semester trying this. But I don't have a Mac so I cannot debug this in advance. Use homebrew to install all packages from linux not available on the Mac.
+
+```sh
+# Install Xcode command-line tools (includes Clang, make, and other essential tools)
+xcode-select --install
+
+# Install Homebrew if not already installed
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Install Clang, GCC, and essential build tools
+brew install llvm  # Clang (alternative to GCC)
+brew install gcc   # GCC (if preferred over Clang)
+brew install make cmake  # Make and CMake
+# ssh may already be installed on the mac, but if not, brew is standard way:
+brew install openssh
+# Install OpenGL-related libraries
+brew install glfw glew libomp
+
+# Install FFmpeg and libwebp for multimedia and image processing
+brew install ffmpeg libwebp
+```
