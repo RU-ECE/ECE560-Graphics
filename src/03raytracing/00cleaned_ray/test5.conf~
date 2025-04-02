@@ -1,9 +1,0 @@
-filename           test5
-w                  2080
-min_coord          -3
-max_coord          3
-samples_per_pixel  2000
-max_depth          20
-vfov               20
-defocus_angle      0.1
-focus_dist         10.0
