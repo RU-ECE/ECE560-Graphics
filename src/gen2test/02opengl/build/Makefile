@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl
+CMAKE_SOURCE_DIR = /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/build
+CMAKE_BINARY_DIR = /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/build/CMakeFiles /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/build/CMakeFiles /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -206,6 +206,19 @@ depend:
 08_keymap/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/08_keymap.dir/build.make CMakeFiles/08_keymap.dir/build
 .PHONY : 08_keymap/fast
+
+#=============================================================================
+# Target rules for targets named 09_texture
+
+# Build rule for target.
+09_texture: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 09_texture
+.PHONY : 09_texture
+
+# fast build rule for target.
+09_texture/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/09_texture.dir/build.make CMakeFiles/09_texture.dir/build
+.PHONY : 09_texture/fast
 
 01_window.o: 01_window.cpp.o
 .PHONY : 01_window.o
@@ -375,6 +388,30 @@ depend:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/08_keymap.dir/build.make CMakeFiles/08_keymap.dir/08_keymap.cpp.s
 .PHONY : 08_keymap.cpp.s
 
+09_texture.o: 09_texture.cpp.o
+.PHONY : 09_texture.o
+
+# target to build an object file
+09_texture.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/09_texture.dir/build.make CMakeFiles/09_texture.dir/09_texture.cpp.o
+.PHONY : 09_texture.cpp.o
+
+09_texture.i: 09_texture.cpp.i
+.PHONY : 09_texture.i
+
+# target to preprocess a source file
+09_texture.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/09_texture.dir/build.make CMakeFiles/09_texture.dir/09_texture.cpp.i
+.PHONY : 09_texture.cpp.i
+
+09_texture.s: 09_texture.cpp.s
+.PHONY : 09_texture.s
+
+# target to generate assembly for a file
+09_texture.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/09_texture.dir/build.make CMakeFiles/09_texture.dir/09_texture.cpp.s
+.PHONY : 09_texture.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -390,6 +427,7 @@ help:
 	@echo "... 05_rect"
 	@echo "... 06_transform"
 	@echo "... 08_keymap"
+	@echo "... 09_texture"
 	@echo "... 01_window.o"
 	@echo "... 01_window.i"
 	@echo "... 01_window.s"
@@ -411,6 +449,9 @@ help:
 	@echo "... 08_keymap.o"
 	@echo "... 08_keymap.i"
 	@echo "... 08_keymap.s"
+	@echo "... 09_texture.o"
+	@echo "... 09_texture.i"
+	@echo "... 09_texture.s"
 .PHONY : help
 
 

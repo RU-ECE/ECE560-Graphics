@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/bin/03_trianglecolor"
-  "/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/bin/03_trianglecolor.pdb"
+  "/home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/bin/03_trianglecolor"
+  "/home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/bin/03_trianglecolor.pdb"
   "CMakeFiles/03_trianglecolor.dir/03_trianglecolor.cpp.o"
   "CMakeFiles/03_trianglecolor.dir/03_trianglecolor.cpp.o.d"
 )
