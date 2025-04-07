@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/bin/02_triangle"
-  "/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/bin/02_triangle.pdb"
+  "/home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/bin/02_triangle"
+  "/home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/bin/02_triangle.pdb"
   "CMakeFiles/02_triangle.dir/02_triangle.cpp.o"
   "CMakeFiles/02_triangle.dir/02_triangle.cpp.o.d"
 )

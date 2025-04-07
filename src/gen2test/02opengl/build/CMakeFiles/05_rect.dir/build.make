@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl
+CMAKE_SOURCE_DIR = /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/build
+CMAKE_BINARY_DIR = /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/05_rect.dir/depend.make
@@ -72,16 +72,16 @@ include CMakeFiles/05_rect.dir/flags.make
 CMakeFiles/05_rect.dir/05_rect.cpp.o: CMakeFiles/05_rect.dir/flags.make
 CMakeFiles/05_rect.dir/05_rect.cpp.o: ../05_rect.cpp
 CMakeFiles/05_rect.dir/05_rect.cpp.o: CMakeFiles/05_rect.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/05_rect.dir/05_rect.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/05_rect.dir/05_rect.cpp.o -MF CMakeFiles/05_rect.dir/05_rect.cpp.o.d -o CMakeFiles/05_rect.dir/05_rect.cpp.o -c /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/05_rect.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/05_rect.dir/05_rect.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/05_rect.dir/05_rect.cpp.o -MF CMakeFiles/05_rect.dir/05_rect.cpp.o.d -o CMakeFiles/05_rect.dir/05_rect.cpp.o -c /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/05_rect.cpp
 
 CMakeFiles/05_rect.dir/05_rect.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/05_rect.dir/05_rect.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/05_rect.cpp > CMakeFiles/05_rect.dir/05_rect.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/05_rect.cpp > CMakeFiles/05_rect.dir/05_rect.cpp.i
 
 CMakeFiles/05_rect.dir/05_rect.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/05_rect.dir/05_rect.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/05_rect.cpp -o CMakeFiles/05_rect.dir/05_rect.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/05_rect.cpp -o CMakeFiles/05_rect.dir/05_rect.cpp.s
 
 # Object files for target 05_rect
 05_rect_OBJECTS = \
@@ -90,18 +90,18 @@ CMakeFiles/05_rect.dir/05_rect.cpp.s: cmake_force
 # External object files for target 05_rect
 05_rect_EXTERNAL_OBJECTS =
 
-/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/bin/05_rect: CMakeFiles/05_rect.dir/05_rect.cpp.o
-/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/bin/05_rect: CMakeFiles/05_rect.dir/build.make
-/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/bin/05_rect: /usr/lib/x86_64-linux-gnu/libGLEW.so
-/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/bin/05_rect: /usr/lib/x86_64-linux-gnu/libglfw.so.3.3
-/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/bin/05_rect: /usr/lib/x86_64-linux-gnu/libGLX.so
-/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/bin/05_rect: /usr/lib/x86_64-linux-gnu/libOpenGL.so
-/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/bin/05_rect: CMakeFiles/05_rect.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/bin/05_rect"
+/home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/bin/05_rect: CMakeFiles/05_rect.dir/05_rect.cpp.o
+/home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/bin/05_rect: CMakeFiles/05_rect.dir/build.make
+/home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/bin/05_rect: /usr/lib/x86_64-linux-gnu/libGLEW.so
+/home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/bin/05_rect: /usr/lib/x86_64-linux-gnu/libglfw.so.3.3
+/home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/bin/05_rect: /usr/lib/x86_64-linux-gnu/libGLX.so
+/home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/bin/05_rect: /usr/lib/x86_64-linux-gnu/libOpenGL.so
+/home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/bin/05_rect: CMakeFiles/05_rect.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/bin/05_rect"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/05_rect.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/05_rect.dir/build: /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/bin/05_rect
+CMakeFiles/05_rect.dir/build: /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/bin/05_rect
 .PHONY : CMakeFiles/05_rect.dir/build
 
 CMakeFiles/05_rect.dir/clean:
@@ -109,6 +109,6 @@ CMakeFiles/05_rect.dir/clean:
 .PHONY : CMakeFiles/05_rect.dir/clean
 
 CMakeFiles/05_rect.dir/depend:
-	cd /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/build /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/build /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/build/CMakeFiles/05_rect.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/build /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/build /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/build/CMakeFiles/05_rect.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/05_rect.dir/depend
 

@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl
+CMAKE_SOURCE_DIR = /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/build
+CMAKE_BINARY_DIR = /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/08_keymap.dir/depend.make
@@ -72,16 +72,16 @@ include CMakeFiles/08_keymap.dir/flags.make
 CMakeFiles/08_keymap.dir/08_keymap.cpp.o: CMakeFiles/08_keymap.dir/flags.make
 CMakeFiles/08_keymap.dir/08_keymap.cpp.o: ../08_keymap.cpp
 CMakeFiles/08_keymap.dir/08_keymap.cpp.o: CMakeFiles/08_keymap.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/08_keymap.dir/08_keymap.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/08_keymap.dir/08_keymap.cpp.o -MF CMakeFiles/08_keymap.dir/08_keymap.cpp.o.d -o CMakeFiles/08_keymap.dir/08_keymap.cpp.o -c /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/08_keymap.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/08_keymap.dir/08_keymap.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/08_keymap.dir/08_keymap.cpp.o -MF CMakeFiles/08_keymap.dir/08_keymap.cpp.o.d -o CMakeFiles/08_keymap.dir/08_keymap.cpp.o -c /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/08_keymap.cpp
 
 CMakeFiles/08_keymap.dir/08_keymap.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/08_keymap.dir/08_keymap.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/08_keymap.cpp > CMakeFiles/08_keymap.dir/08_keymap.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/08_keymap.cpp > CMakeFiles/08_keymap.dir/08_keymap.cpp.i
 
 CMakeFiles/08_keymap.dir/08_keymap.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/08_keymap.dir/08_keymap.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/08_keymap.cpp -o CMakeFiles/08_keymap.dir/08_keymap.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/08_keymap.cpp -o CMakeFiles/08_keymap.dir/08_keymap.cpp.s
 
 # Object files for target 08_keymap
 08_keymap_OBJECTS = \
@@ -90,18 +90,18 @@ CMakeFiles/08_keymap.dir/08_keymap.cpp.s: cmake_force
 # External object files for target 08_keymap
 08_keymap_EXTERNAL_OBJECTS =
 
-/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/bin/08_keymap: CMakeFiles/08_keymap.dir/08_keymap.cpp.o
-/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/bin/08_keymap: CMakeFiles/08_keymap.dir/build.make
-/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/bin/08_keymap: /usr/lib/x86_64-linux-gnu/libGLEW.so
-/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/bin/08_keymap: /usr/lib/x86_64-linux-gnu/libglfw.so.3.3
-/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/bin/08_keymap: /usr/lib/x86_64-linux-gnu/libGLX.so
-/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/bin/08_keymap: /usr/lib/x86_64-linux-gnu/libOpenGL.so
-/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/bin/08_keymap: CMakeFiles/08_keymap.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/bin/08_keymap"
+/home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/bin/08_keymap: CMakeFiles/08_keymap.dir/08_keymap.cpp.o
+/home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/bin/08_keymap: CMakeFiles/08_keymap.dir/build.make
+/home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/bin/08_keymap: /usr/lib/x86_64-linux-gnu/libGLEW.so
+/home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/bin/08_keymap: /usr/lib/x86_64-linux-gnu/libglfw.so.3.3
+/home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/bin/08_keymap: /usr/lib/x86_64-linux-gnu/libGLX.so
+/home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/bin/08_keymap: /usr/lib/x86_64-linux-gnu/libOpenGL.so
+/home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/bin/08_keymap: CMakeFiles/08_keymap.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/bin/08_keymap"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/08_keymap.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/08_keymap.dir/build: /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/bin/08_keymap
+CMakeFiles/08_keymap.dir/build: /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/bin/08_keymap
 .PHONY : CMakeFiles/08_keymap.dir/build
 
 CMakeFiles/08_keymap.dir/clean:
@@ -109,6 +109,6 @@ CMakeFiles/08_keymap.dir/clean:
 .PHONY : CMakeFiles/08_keymap.dir/clean
 
 CMakeFiles/08_keymap.dir/depend:
-	cd /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/build /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/build /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/build/CMakeFiles/08_keymap.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/build /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/build /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/build/CMakeFiles/08_keymap.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/08_keymap.dir/depend
 

@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/bin/06_transform"
-  "/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/bin/06_transform.pdb"
+  "/home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/bin/06_transform"
+  "/home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/bin/06_transform.pdb"
   "CMakeFiles/06_transform.dir/06_transform.cpp.o"
   "CMakeFiles/06_transform.dir/06_transform.cpp.o.d"
 )

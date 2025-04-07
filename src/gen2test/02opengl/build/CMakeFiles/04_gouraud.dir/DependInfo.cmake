@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/04_gouraud.cpp" "CMakeFiles/04_gouraud.dir/04_gouraud.cpp.o" "gcc" "CMakeFiles/04_gouraud.dir/04_gouraud.cpp.o.d"
+  "/home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/04_gouraud.cpp" "CMakeFiles/04_gouraud.dir/04_gouraud.cpp.o" "gcc" "CMakeFiles/04_gouraud.dir/04_gouraud.cpp.o.d"
   )
 
 # Targets to which this target links.

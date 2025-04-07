@@ -3,7 +3,7 @@
 
 CMakeFiles/02_triangle.dir/02_triangle.cpp.o: ../02_triangle.cpp \
   /usr/include/stdc-predef.h \
-  /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/common/graphics_core.hh \
+  /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/common/graphics_core.hh \
   /usr/include/c++/11/iostream \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -185,7 +185,7 @@ CMakeFiles/02_triangle.dir/02_triangle.cpp.o: ../02_triangle.cpp \
   /usr/include/c++/11/bits/stl_vector.h \
   /usr/include/c++/11/bits/stl_bvector.h \
   /usr/include/c++/11/bits/vector.tcc \
-  /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/common/ex.hh \
+  /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/common/ex.hh \
   /usr/include/glm/glm.hpp \
   /usr/include/glm/detail/_fixes.hpp \
   /usr/include/c++/11/cmath \
@@ -436,6 +436,8 @@ CMakeFiles/02_triangle.dir/02_triangle.cpp.o: ../02_triangle.cpp \
 
 /usr/include/glm/ext/quaternion_relational.inl:
 
+/usr/include/glm/ext/quaternion_geometric.inl:
+
 /usr/include/glm/ext/vector_relational.inl:
 
 /usr/include/glm/gtc/type_ptr.hpp:
@@ -600,10 +602,6 @@ CMakeFiles/02_triangle.dir/02_triangle.cpp.o: ../02_triangle.cpp \
 
 /usr/include/c++/11/ext/new_allocator.h:
 
-/usr/include/glm/detail/type_mat4x3.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
-
 /usr/include/x86_64-linux-gnu/bits/select.h:
 
 /usr/include/x86_64-linux-gnu/bits/time.h:
@@ -676,10 +674,6 @@ CMakeFiles/02_triangle.dir/02_triangle.cpp.o: ../02_triangle.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
 
-/usr/include/glm/mat3x2.hpp:
-
-/usr/include/wchar.h:
-
 /usr/include/c++/11/bits/cxxabi_init_exception.h:
 
 /usr/include/locale.h:
@@ -730,6 +724,22 @@ CMakeFiles/02_triangle.dir/02_triangle.cpp.o: ../02_triangle.cpp \
 
 /usr/include/c++/11/bits/stl_function.h:
 
+/usr/include/glm/ext/quaternion_transform.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
+
+/usr/include/x86_64-linux-gnu/asm/errno.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
+
+/usr/include/c++/11/bits/ostream_insert.h:
+
+/usr/include/c++/11/ostream:
+
+/usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h:
+
 /usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
 
 /usr/include/x86_64-linux-gnu/bits/time64.h:
@@ -766,6 +776,16 @@ CMakeFiles/02_triangle.dir/02_triangle.cpp.o: ../02_triangle.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
 
+/usr/include/glm/detail/type_mat4x3.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
+
+/usr/include/glm/mat3x2.hpp:
+
+/usr/include/wchar.h:
+
+/home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/common/graphics_core.hh:
+
 /usr/include/x86_64-linux-gnu/bits/wordsize.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
@@ -777,22 +797,6 @@ CMakeFiles/02_triangle.dir/02_triangle.cpp.o: ../02_triangle.cpp \
 /usr/include/glm/ext/scalar_uint_sized.hpp:
 
 /usr/include/c++/11/debug/assertions.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
-
-/usr/include/c++/11/bits/ostream_insert.h:
-
-/usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h:
-
-/usr/include/c++/11/ostream:
-
-/usr/include/glm/ext/quaternion_transform.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
-
-/usr/include/x86_64-linux-gnu/asm/errno.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
 
@@ -855,12 +859,6 @@ CMakeFiles/02_triangle.dir/02_triangle.cpp.o: ../02_triangle.cpp \
 /usr/include/glm/ext/vector_float2_precision.hpp:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/atomic_word.h:
-
-/usr/include/glm/ext/quaternion_geometric.inl:
-
-/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/common/graphics_core.hh:
-
-/usr/include/c++/11/bits/functional_hash.h:
 
 /usr/include/glm/detail/type_mat4x4.hpp:
 
@@ -986,6 +984,8 @@ CMakeFiles/02_triangle.dir/02_triangle.cpp.o: ../02_triangle.cpp \
 
 /usr/include/c++/11/bits/charconv.h:
 
+/usr/include/c++/11/bits/functional_hash.h:
+
 /usr/include/c++/11/bits/basic_string.tcc:
 
 /usr/include/glm/ext/quaternion_common.hpp:
@@ -1026,12 +1026,6 @@ CMakeFiles/02_triangle.dir/02_triangle.cpp.o: ../02_triangle.cpp \
 
 /usr/include/c++/11/cwctype:
 
-/usr/include/glm/detail/type_float.hpp:
-
-/usr/include/glm/vector_relational.hpp:
-
-/usr/include/c++/11/bits/streambuf_iterator.h:
-
 /usr/include/glm/detail/type_mat2x4.hpp:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h:
@@ -1070,7 +1064,13 @@ CMakeFiles/02_triangle.dir/02_triangle.cpp.o: ../02_triangle.cpp \
 
 /usr/include/c++/11/bits/vector.tcc:
 
-/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/common/ex.hh:
+/usr/include/glm/detail/type_float.hpp:
+
+/usr/include/glm/vector_relational.hpp:
+
+/usr/include/c++/11/bits/streambuf_iterator.h:
+
+/home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/common/ex.hh:
 
 /usr/include/c++/11/cstring:
 
@@ -1108,10 +1108,6 @@ CMakeFiles/02_triangle.dir/02_triangle.cpp.o: ../02_triangle.cpp \
 
 /usr/include/glm/detail/setup.hpp:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/float.h:
-
-/usr/include/glm/vec2.hpp:
-
 /usr/include/glm/gtc/matrix_transform.hpp:
 
 /usr/include/glm/simd/platform.h:
@@ -1145,6 +1141,10 @@ CMakeFiles/02_triangle.dir/02_triangle.cpp.o: ../02_triangle.cpp \
 /usr/include/c++/11/cfloat:
 
 /usr/include/glm/fwd.hpp:
+
+/usr/include/glm/vec2.hpp:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/float.h:
 
 /usr/include/c++/11/limits:
 
