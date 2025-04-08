@@ -4,6 +4,50 @@
 #include "assimp/postprocess.h"
 using namespace std;
 
+
+/* the following code does not work. Your job is to
+    find all sequences of sequential indices, and for each one record into index_ranges.
+    For example, the first sequence of triangles in buddha.obj is:
+    1,2,3    4,5, ... 121,122,123  That should be stored as index_ranges[0] = (1,123)
+    immediately after that is a non-sequential triangle: 69,124,67 which should be 
+    stored as indices[0] = (69,124,67)
+
+    There are more non-sequential triangles after that.
+    125 126 127 
+    128 129 121 
+    128 130 129
+    Next sequential sequence is 131,132,133,  
+*/
+void compact_indices(aiMesh* m, vector<vec3i>& indices, vector<vec2i>& index_ranges) {
+    uint32_t check_sequential = m->mFaces[0].mIndices[0];
+    uint32_t start_sequential = check_sequential;
+    uint32_t end_sequential = check_sequential;
+    for (unsigned int j = 0; j < m->mNumFaces; j++) {
+        aiFace& f = m->mFaces[j];
+        if (f.mIndices[0] + 1 != f.mIndices[1] ||
+            f.mIndices[1] + 1 != f.mIndices[2]) {
+            end_sequential = check_sequential;
+            indices.emplace_back(f.mIndices[0], f.mIndices[1], f.mIndices[2]);
+            if (end_sequential- start_sequential > 5) {
+                index_ranges.emplace_back(vec2i(start_sequential, end_sequential));
+//                        cerr << "mesh indices sequential from " << start_sequential << " to " << end_sequential << endl;    
+                start_sequential = end_sequential + 1;
+            } else {
+                uint32_t biggest = max(f.mIndices[0], max(f.mIndices[1], f.mIndices[2]));
+                for (unsigned int k = start_sequential; k < check_sequential+3; k++) {
+                    indices.emplace_back(f.mIndices[0], f.mIndices[1], f.mIndices[2]);
+                    uint32_t biggest = max(f.mIndices[0], max(f.mIndices[1], f.mIndices[2]));
+                }
+                start_sequential = check_sequential+4;
+            }
+        } else {
+            check_sequential += 3;
+        }
+    }
+
+}
+
+
 /**
  * Load an obj file and convert it to a blockloader file.
  */
@@ -71,31 +115,16 @@ void convert_obj_blobj(blockloader& bl, const char filename[], int flags) {
                 normals.emplace_back(m->mNormals[j].x, m->mNormals[j].y, m->mNormals[j].z);
             }
         }
+        // this code just copies all indices into the binary file. The next commented out section
+        // is supposed to do much better.
         if (m->mNumFaces > 0) {
-            uint32_t check_sequential = m->mFaces[0].mIndices[0];
-            uint32_t start_sequential = check_sequential;
-            uint32_t end_sequential = check_sequential;
             for (unsigned int j = 0; j < m->mNumFaces; j++) {
                 aiFace& f = m->mFaces[j];
-                if (f.mIndices[0] != check_sequential || f.mIndices[1] != check_sequential+1 || f.mIndices[2] != check_sequential+2) {
-                    end_sequential = check_sequential;
-                    indices.emplace_back(f.mIndices[0], f.mIndices[1], f.mIndices[2]);
-                    if (end_sequential- start_sequential > 5) {
-                        index_ranges.emplace_back(start_sequential, end_sequential);
-//                        cerr << "mesh indices sequential from " << start_sequential << " to " << end_sequential << endl;    
-                        start_sequential = end_sequential;
-                    } else {
-                        uint32_t biggest = max(f.mIndices[0], max(f.mIndices[1], f.mIndices[2]));
-                        for (unsigned int k = start_sequential; k < check_sequential+3; k++) {
-                            indices.emplace_back(f.mIndices[0], f.mIndices[1], f.mIndices[2]);
-                            uint32_t biggest = max(f.mIndices[0], max(f.mIndices[1], f.mIndices[2]));
-                        }
-                        start_sequential = check_sequential+4;
-                    }
-                }
-
-                check_sequential += 3;
+                indices.emplace_back(f.mIndices[0], f.mIndices[1], f.mIndices[2]);
             }
+#if 0
+            compact_indices(m, indices, index_ranges);
+#endif
         }
     }
     auto t1 = chrono::high_resolution_clock::now();
@@ -125,10 +154,8 @@ void convert_obj_blobj(blockloader& bl, const char filename[], int flags) {
     bl.append(texcoords.data(), texcoords.size() * sizeof(vec2f));
     bl.append(normals.data(), normals.size() * sizeof(vec3f));
     bl.append(indices.data(), indices.size() * sizeof(vec3i));
-    bl.append(index_ranges.data(), index_ranges.size() * sizeof(uint32_t));
+    bl.append(index_ranges.data(), index_ranges.size() * sizeof(vec2i));
 }
-
-
 
 int main(int argc, char* argv[]) {
     if (argc < 3) {
@@ -139,8 +166,6 @@ int main(int argc, char* argv[]) {
     const char* blfile = argc >= 3 ? argv[2] : "models/antique_vase.blobj";
     blockloader bl(1024, 0, 0, 0, 0, 0);
     convert_obj_blobj(bl, objfile, 0);
-
-    
-//    m.save(blfile); // save to blockloader binary object model 
+    bl.save(blfile); // save to blockloader binary object model 
     return 0;
 }

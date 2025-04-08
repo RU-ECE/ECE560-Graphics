@@ -141,10 +141,10 @@ struct material_entry {
 
 template<typename T>
 class parasitic_vector {
-private:
+public:
     T* data;
     size_t sz;
-public:
+//public:
     parasitic_vector() : data(nullptr), sz(0) {}
     parasitic_vector(char*& data, size_t sz) : data((T*)data), sz(sz) {
         data += sz * sizeof(T);
@@ -182,6 +182,7 @@ public:
     };
 private:
     blockloader& bl;
+public:
     parasitic_vector<mesh_entry> meshes;
     parasitic_vector<material_entry> materials;
     parasitic_vector<vec3f> vertices;
