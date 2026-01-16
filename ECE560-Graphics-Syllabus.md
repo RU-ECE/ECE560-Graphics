@@ -37,8 +37,8 @@ This course is an introduction to three-dimensional computer graphics and visual
 * Identify the stages in the OpenGL 3D pipeline
 * Write Shader programs
 * Render scenes efficiently using data structures to draw subsets of the model
-* WebGL?
 * Write Vulkan programs
+* WebGL?
 * Identify principles of Data Visualization
 * Recognize characteristics of good and bad visualizations
 * Be able to present data clearly using graphs that are well-suited to the data
@@ -50,6 +50,8 @@ This course is an introduction to three-dimensional computer graphics and visual
 - Test #1:             15%
 - Test #2:             15%
 - Final Project:       35%
+
+Everyone is expected to come to class or be in zoom live. Class will NOT be recorded. If you miss a class, you are expected to get materials you missed from classmates. Class participation includes in-class work, asking questions, interacting with the class and instructor. Participation is mandatory.
 
 ## Textbook and Materials
 
@@ -190,23 +192,25 @@ We will use the free book at learnopengl.com as the primary textbook. It is in t
   - Try to create this visualization [Earth.nullschool.net](https://earth.nullschool.net/) 
 
 
-## Grading Policies (TBD)
+## Grading Policies
 
-The following text is old, has only been partially edited.
 
-The instructor reserves the right to adjust the grading scale. There will always be some students
-who are very close to grade boundaries. There is nothing that we will do about that. Grades are
-based on performance, not need or personal circumstances, and the instructor does not negotiate
-grades. Do not take ECE560 (or take it at your own risk) if you need a certain grade, for
-example, because you are graduating or because you have been conditionally admitted.
-To receive a good grade, you will need to perform well in the exams and the assignments. Please check the correctness of the grading and the posted scores immediately after we announce the
-availability of the scores. You will need to let us know about any grading issue within 14 days
-of us posting the score. After that time, we will no longer entertain your requests for changes to
-your score. If you have a grading issue, you will need to discuss the issue first with the grader. If you
-cannot reach consensus, you can appeal the grading issue to the instructor.
-Late Policy: Homework is due on a given date and closes a week later. There is no penalty for late homework, do not ask. But if you hand it in after it closes, you are not 10 minutes late, you are a week and 10 minutes late. If you know you have a problem, ask for an extension before it is due, NOT AFTER.
-Statement for Students with Disabilities: Any student requesting academic accommodations
-based on a disability is required to register with Disability Services and Programs (DSP) each
+The instructor reserves the right to adjust the grading scale. There will always be some students who are very close to grade boundaries.
+- Do not ask to have your grade adjusted. Repeated requests will result in grade reduction
+- You are expected to know C++ and be able to compile and debug your own programs.
+  - I will try to help, but if you cannot do the work, you will not pass.
+- You can get all the help you need for homework, but cite any help given.
+  - Cite help from AI.
+  - Getting help without citation is plagiarism.
+  - If you do not know what you have done, you will fail the midterm. It is vital that you make sure you understand the code you have produced.
+
+- Please check the correctness of the grading and the posted scores immediately after we announce the availability of the scores. You will need to let us know about any grading issue within 14 days
+of us posting the score. After that time, we will no longer entertain your requests for changes to your score. If you have a grading issue, you will need to discuss the issue first with the grader (if there is one).
+- Homework is due on a given date and closes a week later.
+- There is no penalty for late homework, do not ask.
+- Homework closes a week after it is due. Unless you have a major life event, do not ask for an extention, and ask in advance. Requests after the fact will not be accepted.
+
+Statement for Students with Disabilities: Any student requesting academic accommodations based on a disability is required to register with Disability Services and Programs (DSP) each
 semester. If ODS emails me, your accommodation will be handled.
 
 ## Statement on Academic Integrity
@@ -217,7 +221,7 @@ You are encouraged to use AI, AI-assisted editors, but you also must learn the m
 
 If asked, you must be prepared to explain any software you have submitted. Failure to understand it is grounds for an automatic zero in that assignment.
 
-We use discord to communicate. You can post questions there, and other students can answer. 
+We use discord to communicate. You can post questions there, and other students can answer. If you cannot handle discord, you may request remote office hours via zoom.
 You will be given class participation credit for any answers you give on discord which can help your grade.
 
 ## Resources
