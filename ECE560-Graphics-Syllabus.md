@@ -27,6 +27,7 @@ Dov Kruger
   At the very least, you should review the material in the video to make sure you understand
   how to manage dynamic memory in a C++ object.
 
+[videos on C++ background](https://drive.google.com/drive/folders/1r78b8H4SNlQd8wYb_1E1nn1LXoBD7zoy?usp=drive_link)
 ## Syllabus
 
 This course is an introduction to three-dimensional computer graphics and visualization. By the end of this course, students will know how to:
