@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl
+CMAKE_SOURCE_DIR = /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/build
+CMAKE_BINARY_DIR = /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/build/CMakeFiles /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/build/CMakeFiles /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -219,6 +219,45 @@ depend:
 09_texture/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/09_texture.dir/build.make CMakeFiles/09_texture.dir/build
 .PHONY : 09_texture/fast
+
+#=============================================================================
+# Target rules for targets named 12_dynamic_shader
+
+# Build rule for target.
+12_dynamic_shader: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 12_dynamic_shader
+.PHONY : 12_dynamic_shader
+
+# fast build rule for target.
+12_dynamic_shader/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/12_dynamic_shader.dir/build.make CMakeFiles/12_dynamic_shader.dir/build
+.PHONY : 12_dynamic_shader/fast
+
+#=============================================================================
+# Target rules for targets named 13_birthday
+
+# Build rule for target.
+13_birthday: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 13_birthday
+.PHONY : 13_birthday
+
+# fast build rule for target.
+13_birthday/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/13_birthday.dir/build.make CMakeFiles/13_birthday.dir/build
+.PHONY : 13_birthday/fast
+
+#=============================================================================
+# Target rules for targets named 14_fasttext
+
+# Build rule for target.
+14_fasttext: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 14_fasttext
+.PHONY : 14_fasttext
+
+# fast build rule for target.
+14_fasttext/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/14_fasttext.dir/build.make CMakeFiles/14_fasttext.dir/build
+.PHONY : 14_fasttext/fast
 
 01_window.o: 01_window.cpp.o
 .PHONY : 01_window.o
@@ -412,6 +451,78 @@ depend:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/09_texture.dir/build.make CMakeFiles/09_texture.dir/09_texture.cpp.s
 .PHONY : 09_texture.cpp.s
 
+12_dynamic_shader.o: 12_dynamic_shader.cpp.o
+.PHONY : 12_dynamic_shader.o
+
+# target to build an object file
+12_dynamic_shader.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/12_dynamic_shader.dir/build.make CMakeFiles/12_dynamic_shader.dir/12_dynamic_shader.cpp.o
+.PHONY : 12_dynamic_shader.cpp.o
+
+12_dynamic_shader.i: 12_dynamic_shader.cpp.i
+.PHONY : 12_dynamic_shader.i
+
+# target to preprocess a source file
+12_dynamic_shader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/12_dynamic_shader.dir/build.make CMakeFiles/12_dynamic_shader.dir/12_dynamic_shader.cpp.i
+.PHONY : 12_dynamic_shader.cpp.i
+
+12_dynamic_shader.s: 12_dynamic_shader.cpp.s
+.PHONY : 12_dynamic_shader.s
+
+# target to generate assembly for a file
+12_dynamic_shader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/12_dynamic_shader.dir/build.make CMakeFiles/12_dynamic_shader.dir/12_dynamic_shader.cpp.s
+.PHONY : 12_dynamic_shader.cpp.s
+
+13_birthday.o: 13_birthday.cpp.o
+.PHONY : 13_birthday.o
+
+# target to build an object file
+13_birthday.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/13_birthday.dir/build.make CMakeFiles/13_birthday.dir/13_birthday.cpp.o
+.PHONY : 13_birthday.cpp.o
+
+13_birthday.i: 13_birthday.cpp.i
+.PHONY : 13_birthday.i
+
+# target to preprocess a source file
+13_birthday.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/13_birthday.dir/build.make CMakeFiles/13_birthday.dir/13_birthday.cpp.i
+.PHONY : 13_birthday.cpp.i
+
+13_birthday.s: 13_birthday.cpp.s
+.PHONY : 13_birthday.s
+
+# target to generate assembly for a file
+13_birthday.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/13_birthday.dir/build.make CMakeFiles/13_birthday.dir/13_birthday.cpp.s
+.PHONY : 13_birthday.cpp.s
+
+14_fasttext.o: 14_fasttext.cpp.o
+.PHONY : 14_fasttext.o
+
+# target to build an object file
+14_fasttext.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/14_fasttext.dir/build.make CMakeFiles/14_fasttext.dir/14_fasttext.cpp.o
+.PHONY : 14_fasttext.cpp.o
+
+14_fasttext.i: 14_fasttext.cpp.i
+.PHONY : 14_fasttext.i
+
+# target to preprocess a source file
+14_fasttext.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/14_fasttext.dir/build.make CMakeFiles/14_fasttext.dir/14_fasttext.cpp.i
+.PHONY : 14_fasttext.cpp.i
+
+14_fasttext.s: 14_fasttext.cpp.s
+.PHONY : 14_fasttext.s
+
+# target to generate assembly for a file
+14_fasttext.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/14_fasttext.dir/build.make CMakeFiles/14_fasttext.dir/14_fasttext.cpp.s
+.PHONY : 14_fasttext.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -428,6 +539,9 @@ help:
 	@echo "... 06_transform"
 	@echo "... 08_keymap"
 	@echo "... 09_texture"
+	@echo "... 12_dynamic_shader"
+	@echo "... 13_birthday"
+	@echo "... 14_fasttext"
 	@echo "... 01_window.o"
 	@echo "... 01_window.i"
 	@echo "... 01_window.s"
@@ -452,6 +566,15 @@ help:
 	@echo "... 09_texture.o"
 	@echo "... 09_texture.i"
 	@echo "... 09_texture.s"
+	@echo "... 12_dynamic_shader.o"
+	@echo "... 12_dynamic_shader.i"
+	@echo "... 12_dynamic_shader.s"
+	@echo "... 13_birthday.o"
+	@echo "... 13_birthday.i"
+	@echo "... 13_birthday.s"
+	@echo "... 14_fasttext.o"
+	@echo "... 14_fasttext.i"
+	@echo "... 14_fasttext.s"
 .PHONY : help
 
 

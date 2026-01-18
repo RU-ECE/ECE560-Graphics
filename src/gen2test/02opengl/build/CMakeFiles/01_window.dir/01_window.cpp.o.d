@@ -1,7 +1,7 @@
 CMakeFiles/01_window.dir/01_window.cpp.o: \
- /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/01_window.cpp \
+ /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/01_window.cpp \
  /usr/include/stdc-predef.h \
- /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/../common/graphics_core.hh \
+ /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/../common/graphics_core.hh \
  /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -150,7 +150,7 @@ CMakeFiles/01_window.dir/01_window.cpp.o: \
  /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc \
- /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/../common/ex.hh \
+ /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/../common/ex.hh \
  /usr/include/glm/glm.hpp /usr/include/glm/detail/_fixes.hpp \
  /usr/include/c++/11/cmath /usr/include/math.h \
  /usr/include/x86_64-linux-gnu/bits/math-vector.h \

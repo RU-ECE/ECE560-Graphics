@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DOPENGL=1
 
-CXX_INCLUDES = -I/home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/../common
+CXX_INCLUDES = -I/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/../common
 
 CXX_FLAGS = -g -g -std=gnu++14
 

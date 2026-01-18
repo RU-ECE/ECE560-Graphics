@@ -13,5 +13,5 @@ int main() {
     } catch (const char* msg) {
         std::cout << msg << std::endl;
     }
-    cout << v.size() << '\n';
+    std::cout << v.size() << '\n';
 }

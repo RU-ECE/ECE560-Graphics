@@ -1,4 +1,0 @@
-/home/dkruger/git/ru/ECE560-Graphics/src/02b_modernopengl/buidl/CMakeFiles/opengl_core.dir
-/home/dkruger/git/ru/ECE560-Graphics/src/02b_modernopengl/buidl/CMakeFiles/01_window.dir
-/home/dkruger/git/ru/ECE560-Graphics/src/02b_modernopengl/buidl/CMakeFiles/edit_cache.dir
-/home/dkruger/git/ru/ECE560-Graphics/src/02b_modernopengl/buidl/CMakeFiles/rebuild_cache.dir

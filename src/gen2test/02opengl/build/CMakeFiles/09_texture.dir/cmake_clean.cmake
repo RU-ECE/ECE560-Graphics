@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/bin/09_texture"
-  "/home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/bin/09_texture.pdb"
+  "/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/bin/09_texture"
+  "/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/bin/09_texture.pdb"
   "CMakeFiles/09_texture.dir/09_texture.cpp.o"
   "CMakeFiles/09_texture.dir/09_texture.cpp.o.d"
 )

@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/bin/08_keymap"
-  "/home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/bin/08_keymap.pdb"
+  "/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/bin/08_keymap"
+  "/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/bin/08_keymap.pdb"
   "CMakeFiles/08_keymap.dir/08_keymap.cpp.o"
   "CMakeFiles/08_keymap.dir/08_keymap.cpp.o.d"
 )

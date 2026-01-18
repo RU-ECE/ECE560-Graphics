@@ -139,12 +139,14 @@ void bindxyzrgb(uint32_t vao, uint32_t vbo);
 
 // convenience function for binding vao and vbo with x,y,z,u,v for textures
 void bindxyzuv(uint32_t vao, uint32_t vbo);
-
 void bindxyuv(uint32_t vao, uint32_t vbo);
+
+void bindxy(uint32_t vao, uint32_t vbo);
 
 // convenience function for binding vao and vbo with x,y,z,value
 //for a heat map looking up the color in a 1D texture
 void bindxyz_val(uint32_t vao, uint32_t vbo);
+void bindxy_val(uint32_t vao, uint32_t vbo);
 
 // convenience function for unbinding vao and vbo
 void unbind(uint32_t vao, uint32_t vbo);

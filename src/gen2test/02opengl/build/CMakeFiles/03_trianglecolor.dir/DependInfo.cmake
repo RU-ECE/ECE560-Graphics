@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/03_trianglecolor.cpp" "CMakeFiles/03_trianglecolor.dir/03_trianglecolor.cpp.o" "gcc" "CMakeFiles/03_trianglecolor.dir/03_trianglecolor.cpp.o.d"
+  "/home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/03_trianglecolor.cpp" "CMakeFiles/03_trianglecolor.dir/03_trianglecolor.cpp.o" "gcc" "CMakeFiles/03_trianglecolor.dir/03_trianglecolor.cpp.o.d"
   )
 
 # Targets to which this target links.

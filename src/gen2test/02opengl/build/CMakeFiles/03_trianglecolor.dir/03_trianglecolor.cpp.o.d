@@ -1,7 +1,7 @@
 CMakeFiles/03_trianglecolor.dir/03_trianglecolor.cpp.o: \
- /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/03_trianglecolor.cpp \
+ /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/03_trianglecolor.cpp \
  /usr/include/stdc-predef.h \
- /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/../common/graphics_core.hh \
+ /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/../common/graphics_core.hh \
  /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -150,7 +150,7 @@ CMakeFiles/03_trianglecolor.dir/03_trianglecolor.cpp.o: \
  /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc \
- /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/../common/ex.hh \
+ /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/../common/ex.hh \
  /usr/include/glm/glm.hpp /usr/include/glm/detail/_fixes.hpp \
  /usr/include/c++/11/cmath /usr/include/math.h \
  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
@@ -332,4 +332,4 @@ CMakeFiles/03_trianglecolor.dir/03_trianglecolor.cpp.o: \
  /usr/include/string.h /usr/include/strings.h \
  /usr/include/glm/gtc/type_ptr.inl /usr/include/GL/glew.h \
  /usr/include/GL/glu.h /usr/include/GL/gl.h /usr/include/GLFW/glfw3.h \
- /home/dkruger/tmp/ru/ECE560-Graphics/src/gen2test/02opengl/shader_onecolor.hh
+ /home/dkruger/git/ru/ECE560-Graphics/src/gen2test/02opengl/shader_onecolor.hh
