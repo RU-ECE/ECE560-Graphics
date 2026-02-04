@@ -20,7 +20,7 @@ void draw() {
   translate(width/2, height/2, -1000);
   rotateY(orbitAngle); // rotate to the right angle around the center
   translate(earthOrbitDistance, 0, 0); // move out the right distance (from the sun)
-  rotateY(-orbitAngle); // counteract the rotation from placing the earth
+  rotateY(-orbitAngle); // counteract the rotation from placingp the earth
     
 pushMatrix();
   rotateX(DEG2RAD*-23.34); // tilt the axis like the real earth
