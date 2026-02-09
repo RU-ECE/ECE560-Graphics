@@ -14,7 +14,8 @@ void display() {
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    glScalef(4.0, 2.0, 1e-9);
+    glScalef(4.0, 2.0, 0); // scale z by zero SHOULD cause a problem???
+    glRotatef(30.0, 1.0, 1.0, 0.0);
 
     // Draw a sphere
     // notice: direction of triangle is counterclockwise
