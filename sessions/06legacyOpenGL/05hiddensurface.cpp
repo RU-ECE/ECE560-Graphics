@@ -4,7 +4,12 @@
 using namespace std;
 
 void init() {
-//    glEnable(GL_DEPTH_TEST);
+    // the one in front is drawn first
+    // if GL_DEPTH_TEST is not enabled,
+    // the one in back is drawn over the first one,
+    // if DEPTH_TEST is enabled, the one in front is drawn over the other
+    // regardless of order
+    //glEnable(GL_DEPTH_TEST);
 }
 
 void display() {
@@ -14,9 +19,20 @@ void display() {
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    glScalef(4.0, 2.0, 0); // scale z by zero SHOULD cause a problem???
+    glScalef(2.0, 2.0, 1);
     glRotatef(30.0, 1.0, 1.0, 0.0);
 
+    glTranslatef(0.5f, 0.0f, 0.5f); // move the triangle to the right and up
+    glBegin(GL_TRIANGLES);
+    glColor3f(1.0f, 1.0f, 0.0f); // red (OPenGL uses 0.0 to 1.0 portable)
+    glVertex3f(-1.0f, -1.0f, 0.0f); //bottom left
+    glColor3f(0.0f, 1.0f, 1.0f); // green (OPenGL uses 0.0 to 1.0 portable)
+    glVertex3f(1.0f, -1.0f, 0.0f); // botton right
+    glColor3f(1.0f, 0.0f, 1.0f); // blue (OPenGL uses 0.0 to 1.0 portable)
+    glVertex3f(0.0f, 1.0f, 0.0f);  // top center
+    glEnd();
+
+    glTranslatef(-0.5f, 0.0f, -0.5f); // move the triangle to the right and up
     // notice: direction of triangle is counterclockwise
     glBegin(GL_TRIANGLES);
     glColor3f(1.0f, 0.0f, 0.0f); // red (OPenGL uses 0.0 to 1.0 portable)
@@ -26,6 +42,8 @@ void display() {
     glColor3f(0.0f, 0.0f, 1.0f); // blue (OPenGL uses 0.0 to 1.0 portable)
     glVertex3f(0.0f, 1.0f, 0.0f);  // top center
     glEnd();
+
+
 
     glutSwapBuffers();
 }

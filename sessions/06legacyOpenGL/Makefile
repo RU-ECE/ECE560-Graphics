@@ -4,7 +4,8 @@ CXX   :=  g++ $(DEBUG) $(OPT)
 LIBS  := -lGL -lGLU -lglut  # this is for linux
 #LIBS := -lopengl32 -lglu32 -lfreeglut   # this is for windows (with freeglut)
 
-DEMOS := 00nodraw 01emptywindow 02hellosphere 03hellotriangle 04gouraudtriangles
+DEMOS := 00nodraw 01emptywindow 02hellosphere 03hellotriangle \
+		04gouraudtriangles 05hiddensurface 06drawingmodes
 all: $(DEMOS)
 
 00nodraw: 00nodraw.cpp
@@ -22,5 +23,10 @@ all: $(DEMOS)
 04gouraudtriangles: 04gouraudtriangles.cpp
 	$(CXX) $< -o $@ $(LIBS)
 
+05hiddensurface: 05hiddensurface.cpp
+	$(CXX) $< -o $@ $(LIBS)
+
+06drawingmodes: 06drawingmodes.cpp
+	$(CXX) $< -o $@ $(LIBS)
 clean:
 	rm *.o *.exe $(DEMOS)
