@@ -42,8 +42,14 @@ void glmain() {
 
 		// Draw the rectangle !
         //TODO: rewrite using only 4 points using GL_TRIANGLE_STRIP
-		glDrawArrays(GL_TRIANGLES, 0, 6); // draw 2 triangles (2 groups of 3 vertices each)
+        GLint loc = glGetUniformLocation(programID, "rgba");
 
+        // set the value (example: yellow)
+        glUniform4f(loc, 1.0f, 1.0f, 0.0f, 1.0f);
+        glDrawArrays(GL_TRIANGLES, 0, 6); // draw 2 triangles (2 groups of 3 vertices each)
+
+        glUniform4f(loc, 0.0f, 0.0f, 0.0f, 1.0f);
+		glDrawArrays(GL_LINE_LOOP, 0, 6); // draw the edges        
 		glDisableVertexAttribArray(0);
 
 		glfwSwapBuffers(win); // double buffer
