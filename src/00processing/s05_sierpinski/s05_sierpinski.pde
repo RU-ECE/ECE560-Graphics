@@ -16,7 +16,10 @@ void sierpinski(int x1, int y1, int x2, int y2, int x3, int y3, int level) {
      triangle(x1,y1, x2,y2, x3,y3); 
      return;
   }
-  sierpinski(x1, y1, x2,y2, x3,y3, level-1);  
+  float xa = 0, ya = 0;
+  float xb = 0, yb = 0;
+  float xc = 0, yc = 0;
+  sierpinski(x1, y1, xa,ya, xc,yc, level-1);  
   sierpinski(x1, y1, x2,y2, x3,y3, level-1);  
   sierpinski(x1, y1, x2,y2, x3,y3, level-1);  
 }

@@ -18,8 +18,8 @@ void glmain() {
 
 	uint32_t vao; // vertex array object, a box that holds stuff to use in drawing
 	glGenVertexArrays(1, &vao);
-	glBindVertexArray(vao);
-	uint32_t vbo = make_static_vbo(vertices, sizeof(vertices));
+	glBindVertexArray(vao); // from now on, everything is inside vao
+	uint32_t vbo = make_static_vbo(vertices, sizeof(vertices)); // vertices is 36 bytes
 
 	do {
 		glClear( GL_COLOR_BUFFER_BIT );  	// Clear the screen

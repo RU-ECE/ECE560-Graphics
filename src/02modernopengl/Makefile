@@ -35,7 +35,7 @@ common.o:  common/common.cc common/common.hh
 bin/01window: 01window.cc common.o
 	$(COMP) $< -o $@ $(LIBS)
 
-bin/02triangle: 02triangle.cc common.o
+bin/02triangle: 02triangle.cc 02simple.vert 02simple.frag common.o
 	$(COMP) $< -o $@ $(LIBS)
 
 bin/02b_rect: 02b_rect.cc common.o
