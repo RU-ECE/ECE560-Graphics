@@ -16,7 +16,7 @@ else
 	endif
 endif
 
-all: bin/04transform # bin/05cylinder
+all: bin/04transform  bin/05cylinder
 
 #this builds the single common object file used by all demos
 #which contains a standard main, loader for shaders,
