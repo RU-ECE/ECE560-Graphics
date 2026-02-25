@@ -1,15 +1,12 @@
 #include <iostream>
 #include "common/common.hh"
 #include <vector>
+#include "Shape.hpp"
 
 using namespace std;
 
 float RAD2DEG(float x) { return x * (180 / M_PI); }
 
-struct point3d {
-	float x,y,z;
-	float r,g,b;
-};
 // sizeof(point3d) should be 6 floats*4 bytes per float = 24 bytes	
 vector<point3d> create_cylinder(int resolution) {
 	// create a cylinder with the given resolution (number of points around the circle)
@@ -37,7 +34,8 @@ void glmain() {
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
 	// each point is x,y, r,g,b
-	static const vector<point3d> vertices = create_cylinder(20);
+//	static const vector<point3d> vertices = create_cylinder(20);
+	static const vector<point3d> vertices = Shape::torus(20, 20, 0.2, 0.4);
 
 	uint32_t vbo;
 	glGenBuffers(1, &vbo);
@@ -85,8 +83,10 @@ void glmain() {
 		glUniformMatrix4fv(matrixID, 1, GL_FALSE, &transform[0][0]);
 //#endif
 		
-		// Draw the triangle !
+		// Draw the shape
 		glDrawArrays(GL_TRIANGLE_STRIP, 0, vertices.size()); // 3 indices starting at 0 -> 1 triangle
+
+//		glDrawElements(GL_TRIANGLE_STRIP, 0, vertices.size());
 
 		glDisableVertexAttribArray(0);
 		glDisableVertexAttribArray(1);

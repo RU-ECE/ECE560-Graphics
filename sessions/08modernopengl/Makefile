@@ -27,8 +27,8 @@ common.o:  common/common.cc common/common.hh
 bin/04transform: 04transform.cc common.o
 	$(COMP) $< -o $@ $(LIBS)
 
-bin/05cylinder: 05cylinder.cc common.o
-	$(COMP) $< -o $@ $(LIBS)
+bin/05cylinder: 05cylinder.cc Shape.cpp common.o
+	$(COMP) 05cylinder.cc Shape.cpp -o $@ $(LIBS)
 
 clean:
 	rm bin/*
