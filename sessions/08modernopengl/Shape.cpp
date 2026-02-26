@@ -56,3 +56,73 @@ vector<point3d> Shape::torus(uint32_t latRes, uint32_t longRes, float innerRadiu
     }
     return vertices;
 }
+
+
+/**
+ * The problem with the shapes above is that we replicate points. THey are up to 6 times slower than they need to be
+ * Every transformation must be applied to every point. Copying a point is a lot of work
+ * We can do better using indices
+ * 
+ * 
+ * p00  p01   p02   p03  p04
+ * p10  p11   p12   p13  p14
+ * p20  p21   p22   p23  p24
+ * p30  p31   p32   p33  p34
+ * 
+ */
+void Shape::heatmap(uint32_t rows, uint32_t cols, std::vector<point3d>& vert, vector<uint32_t>& indices , float minVal, float maxVal) {
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            float val = vert[i*cols + j].y;
+            float r = (val - minVal) / (maxVal - minVal);
+            vert.push_back({i, j, 0, r, 1-r, 0});
+        }
+    }
+
+    for (int i = 0; i < rows-1; i++) {
+        for (int j = 0; j < cols; j++) {
+            uint32_t p00 = i*cols + j;
+            uint32_t p01 = i*cols + (j+1);
+            uint32_t p10 = (i+1)*cols + j;
+            uint32_t p11 = (i+1)*cols + (j+1);
+            indices.push_back(p00);
+            indices.push_back(p10);
+            indices.push_back(p11);
+            indices.push_back(p00);
+            indices.push_back(p11);
+            indices.push_back(p01);
+        }
+    }
+
+    float rcenter = (R + rin) / 2;
+    float rcross_section = (R - rin) / 2;
+    for (int i = 0; i < latRes; i++) {
+        float r = 0, g = 1, b = 0;
+        float latAngle = (2 * M_PI / latRes) * i;
+        float latAngle2 = (2 * M_PI / latRes) * (i+1);
+        const float dcolor = 1.0 / (longRes+1);
+        for (int j = 0; j <= longRes; j++) {
+            float longAngle = (2 * M_PI / longRes) * j;
+            b = 0;
+            float x = (R + rin * cos(latAngle)) * cos(longAngle);
+            float y = rin * sin(latAngle);
+            float z = (R + rin * cos(latAngle)) * sin(longAngle);
+            vert.push_back({x, y, z, r, g, b});
+            float x2 = (R + rin * cos(latAngle2)) * cos(longAngle);
+            float y2 = rin * sin(latAngle2);
+            float z2 = (R + rin * cos(latAngle2)) * sin(longAngle);
+            vert.push_back({x2, y2, z2, r, g, b});
+            r += dcolor;
+            g -= dcolor;
+        }
+    }
+    return vertices;
+}
+
+
+
+
+
+
+}
