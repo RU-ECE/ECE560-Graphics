@@ -136,6 +136,30 @@ void bindxyzrgb(uint32_t vao, uint32_t vbo) {
 	glEnableVertexAttribArray(1); // pass rgb to shader
 }
 
+void bindxyuv(uint32_t vao, uint32_t vbo) {
+	glBindVertexArray(vao);           // draw using vao and its vbo, and anything else inside it
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glVertexAttribPointer(
+		0,                  // first parameter to shader, numbered 0
+		2,                  // 2 floating point numbers (x,y) = 0
+		GL_FLOAT,           // type
+		GL_FALSE,           // normalized?
+		4*sizeof(float),    // there are 5 numbers total, this uses first 2
+		(void*)0            // array buffer offset
+	);
+	glVertexAttribPointer(
+		1,                     // 2nd parameter to shader, numbered 1
+		2,                     // 3 floating point numbers r,g,b
+		GL_FLOAT,              // all these values are float
+		GL_FALSE,              // normalized?
+		4*sizeof(float),       // there are 5 numbers total, this uses first 2
+		(void*)(2*sizeof(float)) // after x,y offset of rgb = 2
+	);
+
+	glEnableVertexAttribArray(0); // pass x,y to shader
+	glEnableVertexAttribArray(1); // pass rgb to shader
+}
+
 void bindxyzuv(uint32_t vao, uint32_t vbo) {
 	glBindVertexArray(vao);           // draw using vao and its vbo, and anything else inside it
     glBindBuffer(GL_ARRAY_BUFFER, vbo);

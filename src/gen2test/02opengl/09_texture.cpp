@@ -11,7 +11,7 @@ private:
     uint32_t programID;
     uint32_t vao;
     uint32_t vbo;
-    GLuint texture;
+    uint32_t texture;
 public:
     void init() override {
         programID = build_prog(vs_texture, fs_texture);
