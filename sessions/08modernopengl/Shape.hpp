@@ -19,6 +19,10 @@ public:
     static std::vector<point3d> cone(uint32_t res, float radius, float height);
     static std::vector<point3d> torus(uint32_t latRes, uint32_t longRes, float innerRadius, float outerRadius);
     static std::vector<point3d> disk(uint32_t res, float radius);
+    static void heatmap(uint32_t latRes, uint32_t longRes,
+    std::vector<point3d>& vert, std::vector<uint32_t>& indices , const std::vector<float>& values);
 
-    static void heatmap(const std::vector<point3d>& vertices, std::vector<uint32_t>& indices , float minVal, float maxVal);
+    static void heatmap(uint32_t rows, uint32_t cols,
+         std::vector<point3d>& vertices, std::vector<uint32_t>& indices,
+    const std::vector<float>& values, float minVal, float maxVal);
 };
