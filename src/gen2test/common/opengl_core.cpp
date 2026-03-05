@@ -184,9 +184,21 @@ void bindxyzuv(uint32_t vao, uint32_t vbo) {
 	glEnableVertexAttribArray(1); // pass rgb to shader
 }
 
+void bindxyzuvnorm(uint32_t vao, uint32_t vbo) {
+	glBindVertexArray(vao);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8*sizeof(float), (void*)0);
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 8*sizeof(float), (void*)(3*sizeof(float)));
+	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 8*sizeof(float), (void*)(5*sizeof(float)));
+	glEnableVertexAttribArray(0);
+	glEnableVertexAttribArray(1);
+	glEnableVertexAttribArray(2);
+}
+
 void unbind(uint32_t vao, uint32_t vbo) {
 	glDisableVertexAttribArray(0);
 	glDisableVertexAttribArray(1);
+	glDisableVertexAttribArray(2);
   	glBindVertexArray(0);            // stop drawing using vao
 	glBindBuffer(GL_ARRAY_BUFFER, 0); // stop drawing using vbo
 }
@@ -413,6 +425,6 @@ uint32_t make_static_vbo(const float vert[], uint32_t len) {
 	uint32_t vbo;
 	glGenBuffers(1, &vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-	glBufferData(GL_ARRAY_BUFFER, len, vert, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, len*sizeof(float), vert, GL_STATIC_DRAW);
 	return vbo;
 }

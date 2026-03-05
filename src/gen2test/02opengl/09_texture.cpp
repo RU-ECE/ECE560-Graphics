@@ -15,6 +15,11 @@ private:
 public:
     void init() override {
         programID = build_prog(vs_texture, fs_texture);
+        glUseProgram(programID); // important: shader must be in use to pre-set its parameters
+        glUniform1i(glGetUniformLocation(programID, "tex"), 0); // set the texture unit to 0 for this shader
+        // this is slow, so do it only once in initialization
+        // note: if you don't do this, it still may work, but unreliably based on drive state
+        glUseProgram(0); // stop using the shader
         texture = loadWebPTexture("../img/earth.webp");
 
         const vector<float> xyuv = {
@@ -28,6 +33,7 @@ public:
     void render() override {
         bindxyuv(vao, vbo);
         glUseProgram(programID);
+        glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, texture);
         glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
         unbind(vao, vbo);

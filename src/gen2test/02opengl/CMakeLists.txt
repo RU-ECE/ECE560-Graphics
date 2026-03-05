@@ -15,6 +15,14 @@
 # 05_rect: draw a rectangle using GL_TRIANGLE_STRIP
 # 06_transform: draw a gouraud-shaded triangle and transform it with a view matrix
 # 07_projection: fly around 2 triangles using a projection shader
+# 08_keymap: map inputs into a single unified hashmap binding system
+#    doesn't do anything at the moment, just prints out the key
+# 09_texture: draw a quad with a texture
+# 10_lighting: use materials and lights to demo phong shading
+
+
+
+
 # 08_projection_panright: move the camera right so the object moves left
 # 09_sphere: draw a wireframe sphere
 # 10_sphere: draw a textured sphere
@@ -82,6 +90,7 @@ add_opengl_executable(05_rect "05_rect.cpp")
 add_opengl_executable(06_transform "06_transform.cpp")
 add_opengl_executable(08_keymap "08_keymap.cpp")
 add_opengl_executable(09_texture "09_texture.cpp")
+#add_opengl_executable(10_lighting "10_lighting.cpp")
 #add_opengl_executable(10_loadmodel "10_loadmodel.cpp")
 #add_opengl_executable(06_projection "06_projection.cpp")
 #add_opengl_executable(07_sphere "07_sphere.cpp")
