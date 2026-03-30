@@ -16,7 +16,7 @@ else
 	endif
 endif
 
-all: bin/04transform  bin/05cylinder bin/06heatmap
+all: bin/04transform  bin/05cylinder  bin/07lighting #bin/06heatmap
 
 #this builds the single common object file used by all demos
 #which contains a standard main, loader for shaders,
@@ -32,6 +32,9 @@ bin/05cylinder: 05cylinder.cc Shape.o common.o
 
 bin/06heatmap: 06heatmap.cc Shape.o common.o
 	$(COMP) 06heatmap.cc Shape.o -o $@ $(LIBS)
+
+bin/07lighting: 07lighting.cc common.o
+	$(COMP) 07lighting.cc -o $@ $(LIBS)
 
 Shape.o: Shape.cpp
 	$(COMP) -c $<

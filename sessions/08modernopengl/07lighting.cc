@@ -7,19 +7,27 @@ using namespace std;
 
 float RAD2DEG(float x) { return x * (180 / M_PI); }
 
+struct ptmat {
+    float x, y, z; // location of vertex
+    float nx, ny, nz; // normal vector at vertex
+};
+
 // sizeof(point3d) should be 6 floats*4 bytes per float = 24 bytes	
-vector<point3d> create_cylinder(int resolution) {
+vector<ptmat> create_cylinder(int resolution) {
 	// create a cylinder with the given resolution (number of points around the circle)
-	// return an array of vertices, each vertex is x,y,r,g,b
+	// return an array of vertices, each vertex is x,y,z and nx,ny,nz
 	// THERE IS NO TOP OR BOTTOM, just the sides
-	vector<point3d> vertices;
+	vector<ptmat> vertices;
 	for (int i = 0; i <= resolution; i++) {
 		float angle =  (2 * M_PI/resolution) * i;
 		float x = cos(angle);
 		float z = sin(angle);
 		cout << "vertex " << i << " is at " << x << ",0," << z << endl;
-		vertices.push_back({x, 0, z, 1, 1, 1}); // white color
-		vertices.push_back({x, 1, z, 1, 0, 0}); // red color
+        float nx = x, ny = 0, nz = z; // this IS A UNIT VECTOR because the cylinder is r=1
+		vertices.push_back({x, 0, z, nx, ny, nz}); // store normals at each point
+		vertices.push_back({x, 1, z, nx, ny, nz}); 
+        // note: we never did anything about top and bottom
+        // what would we do about the corners anyway? 
 	}
 	return vertices;
 }
@@ -42,7 +50,7 @@ void glmain() {
 		values.push_back(j / float(cols-1));
 	}
 
-	Shape::heatmap(rows, cols, vert, indices, values);
+    vector<ptmat> vertices = create_cylinder(6);
 
 	uint32_t vbo;
 	uint32_t vbo_length = vert.size();
@@ -50,13 +58,35 @@ void glmain() {
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(point3d) * vert.size(), &vert[0], GL_STATIC_DRAW);
 	glBindVertexArray(0); // we aren't working with vao any more
-	uint32_t ebo; // element buffer object
-	glGenBuffers(1, &ebo);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(uint32_t) * indices.size(), indices.data(), GL_STATIC_DRAW);
 
 	float a = 0;
-	do {
+    glm::vec3 lightDir = glm::normalize(glm::vec3(1, 1, 1));
+    glm::vec3 lightColor = glm::vec3(1, 1, 1); // white
+
+    uint32_t lightDirID = glGetUniformLocation(programID, "lightDir");
+    glUniform3fv(lightDirID, 1, glm::value_ptr(lightDir));
+    glm::vec3 objectColor = glm::vec3(1, 1, 1); 
+    uint32_t objectColorID = glGetUniformLocation(programID, "objectColor");
+    glUniform3fv(objectColorID, 1, glm::value_ptr(objectColor));
+    glm::vec3 viewPos = glm::vec3(0, 0, 5);  // eye in front of scene (looking down -Z)
+    uint32_t viewPosID = glGetUniformLocation(programID, "viewPos");
+    glUniform3fv(viewPosID, 1, glm::value_ptr(viewPos));
+    
+    glm::vec3 materialAmbient = glm::vec3(0.1, 0.1, 0.1); // dark gray
+    uint32_t materialAmbientID = glGetUniformLocation(programID, "materialAmbient");
+    glUniform3fv(materialAmbientID, 1, glm::value_ptr(materialAmbient));
+    glm::vec3 materialDiffuse = glm::vec3(0.5, 0.5, 0.5);
+    uint32_t materialDiffuseID = glGetUniformLocation(programID, "materialDiffuse");
+    glUniform3fv(materialDiffuseID, 1, glm::value_ptr(materialDiffuse));
+    glm::vec3 materialSpecular = glm::vec3(1, 0, 0);
+    uint32_t materialSpecularID = glGetUniformLocation(programID, "materialSpecular");
+    glUniform3fv(materialSpecularID, 1, glm::value_ptr(materialSpecular));
+    float materialShininess = 32.0f;
+    uint32_t materialShininessID = glGetUniformLocation(programID, "materialShininess");
+    glUniform1f(materialShininessID, materialShininess);
+    
+	
+    do {
 		glClear( GL_COLOR_BUFFER_BIT );  	// Clear the screen
 		glUseProgram(programID);      		// Use our shader
 	  	glBindVertexArray(vao);           // draw using vao and its vbo, and anything else inside it
@@ -76,7 +106,7 @@ void glmain() {
 		);
 		glVertexAttribPointer(
 			1,                     // 2nd parameter to shader, numbered 1
-			3,                     // 3 floating point numbers r,g,b
+			3,                     // 3 floating point numbers nx,ny,nz
 			GL_FLOAT,              // all these values are float
 			GL_FALSE,              // normalized?
 			6*sizeof(float),       // there are 5 numbers total, this uses first 2
@@ -94,12 +124,14 @@ void glmain() {
 //		dump(transform);
 		glUniformMatrix4fv(matrixID, 1, GL_FALSE, &transform[0][0]);
 //#endif
-		
+
+
+
 		// Draw the shape
 //		glDrawArrays(GL_TRIANGLE_STRIP, 0, vbo_length); // the numnber of indices to draw
 
 		// start from the beginning and draw the whole thing
-		glDrawElements(GL_TRIANGLE_STRIP, vbo_length, GL_UNSIGNED_INT, (void*)(0*sizeof(uint32_t)));
+		glDrawArrays(GL_TRIANGLE_STRIP, 0, vbo_length);
 
 		glDisableVertexAttribArray(0);
 		glDisableVertexAttribArray(1);
