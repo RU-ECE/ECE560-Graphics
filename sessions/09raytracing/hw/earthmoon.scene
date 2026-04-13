@@ -1,0 +1,33 @@
+# Earth Moon Scene
+#
+#TODO: how to combine camera, configuration, and scene description?
+#TODO: how to handle different motion characteristics
+#   - circular orbit
+#   - elliptical orbit
+#   - gravity simulator?
+#TODO: how to handle different camera types
+#   - static
+#   - tracking (follow the action)
+#   - lookat (track a point)
+#   - move along a path (linear, circular, bezier, control orientation with quaternions?)
+
+sphere sun
+    center -8 1 0
+    radius 1
+    material emissive 20 20 0.8
+    velocity 0 0 .01
+    acceleration 0 0 0
+
+sphere earth
+    center 0 0 0
+    radius 1
+    material lambertian 0.3 0.3 0.7
+    velocity 0 0 0
+    acceleration 0 0 0
+
+sphere moon
+    center 4 0 0
+    radius 0.25
+    material lambertian 0.4 0.4 0.4
+    velocity 0 0 0
+    acceleration 0 0 0
