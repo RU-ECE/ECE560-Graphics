@@ -31,6 +31,9 @@ private:
 public:
 	void init() override {
 		programID = build_prog(vs_lighting, fs_lighting);
+
+		// could nbe a problem here, see 09_texture for the solution!
+		// you probably should set texture unit 0 for this shader
 		texture_diffuse = loadWebPTexture("../img/earth.webp");
 		texture_specular_exp = make_specular_exponent_texture(32.f);
 
